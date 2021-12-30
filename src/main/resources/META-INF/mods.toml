@@ -1,0 +1,38 @@
+modLoader="javafml"
+loaderVersion="[36,)" 
+license="All Rights Reserved"
+# issueTrackerURL=""
+
+[[mods]]
+modId="hylanda"
+version="v1-Alpha"
+displayName="The Hylanda Mod"
+# updateJSONURL=""
+# displayURL=""
+# logoFile=""
+authors="Willatendo"
+description='''
+The base idea of the mod is to add unique creatures to your world but there is a much deeper lore.
+'''
+
+[[dependencies.hylanda]]
+    modId="forge"
+    mandatory=true
+    versionRange="[36,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.hylanda]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.16.5,1.17)"
+    ordering="NONE"
+    side="BOTH"
+
+    
+[[dependencies.hylanda]]
+    modId="tyrannotitanlib"
+    mandatory=true
+    versionRange="[v1.2.2,)"
+    ordering="NONE"
+    side="BOTH"

@@ -1,0 +1,60 @@
+{
+	"item.additionalcreatures.bio_deer_antlers": "Bio Deer Antlers",
+	"item.additionalcreatures.bio_hide": "Bio Hide",
+	"item.additionalcreatures.cave_salamander_egg": "Cave Salamander Egg",
+	"item.additionalcreatures.cornigersuchus_crest": "Cornigersuchus Crest",
+	"item.additionalcreatures.gojirasaurus_dorsal_plate": "Gojirasaurus Dorsal Plate",
+	"item.additionalcreatures.golden_scale": "Golden Scale",
+	"item.additionalcreatures.slither_gem": "Slither Gem",
+	"item.additionalcreatures.leosaurus_claw": "Leosaurus Claw",
+	"item.additionalcreatures.raw_venison": "Raw Venison",
+	"item.additionalcreatures.cooked_venison": "Cooked Venison",
+	"item.additionalcreatures.wither_bone": "Wither Bone",
+	"item.additionalcreatures.energised_spear": "Energised Spear",
+	"item.additionalcreatures.ore_finder": "Ore Finder",
+	"item.additionalcreatures.beef_and_vegetables": "Beef and Vegetables",
+	"item.additionalcreatures.guide_book": "Guide Book",
+	"item.additionalcreatures.old_book": "Old Book",
+
+	"item.additionalcreatures.hunters_cap": "Hunter's Cap",
+
+	"item.additionalcreatures.gliding_suit": "Gliding Suit",
+
+	"item.additionalcreatures.leather_gojirasaurus_armour": "Leather Gojirasaurus Armour",
+	"item.additionalcreatures.iron_gojirasaurus_armour": "Iron Gojirasaurus Armour",
+	"item.additionalcreatures.gold_gojirasaurus_armour": "Gold Gojirasaurus Armour",
+	"item.additionalcreatures.diamond_gojirasaurus_armour": "Diamond Gojirasaurus Armour",
+	"item.additionalcreatures.netherite_gojirasaurus_armour": "Netherite Gojirasaurus Armour",
+
+	"item.additionalcreatures.leather_bio_deer_armour": "Leather Bio Deer Armour",
+	"item.additionalcreatures.iron_bio_deer_armour": "Iron Bio Deer Armour",
+	"item.additionalcreatures.gold_bio_deer_armour": "Gold Bio Deer Armour",
+	"item.additionalcreatures.diamond_bio_deer_armour": "Diamond Bio Deer Armour",
+	"item.additionalcreatures.netherite_bio_deer_armour": "Netherite Bio Deer Armour",
+
+	"item.additionalcreatures.gojirasaurus_spawn_egg": "Gojirasaurus Spawn Egg",
+	"item.additionalcreatures.bio_deer_spawn_egg": "Bio Deer Spawn Egg",
+
+	"block.additionalcreatures.golden_bricks": "Golden Bricks",
+	
+	"block.additionalcreatures.smithy": "Smithy",
+	
+	"block.additionalcreatures.bio_grass": "Bio Grass",
+
+	"block.additionalcreatures.bio_log": "Bio Log",
+	"block.additionalcreatures.stripped_bio_log": "Stripped Bio Log",
+	"block.additionalcreatures.bio_wood": "Bio Wood",
+	"block.additionalcreatures.stripped_bio_wood": "Stripped Bio Wood",
+	"block.additionalcreatures.bio_leaves": "Bio Leaves",
+	"block.additionalcreatures.bio_sapling": "Bio Sapling",
+	"block.additionalcreatures.bio_planks": "Bio Planks",
+	"block.additionalcreatures.bio_stairs": "Bio Stairs",
+	"block.additionalcreatures.bio_slab": "Bio Slab",
+	"block.additionalcreatures.bio_fence": "Bio Fence",
+	"block.additionalcreatures.bio_fence_gate": "Bio Fence Gate",
+	"block.additionalcreatures.bio_button": "Bio Button",
+	"block.additionalcreatures.bio_pressure_plate": "Bio Pressure_plate",
+	
+	"entity.additionalcreatures.gojirasaurus": "Gojirasaurus",
+	"entity.additionalcreatures.bio_deer": "Bio Deer"
+}

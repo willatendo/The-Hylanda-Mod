@@ -1,0 +1,6 @@
+{
+	"parent": "minecraft:block/cross",
+	"textures": {
+		"cross": "hylanda:block/bioquoia_sapling"
+	}
+}

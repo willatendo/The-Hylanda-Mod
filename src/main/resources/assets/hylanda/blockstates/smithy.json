@@ -1,0 +1,10 @@
+{
+	"variants": {
+		"parts=left": {
+			"model": "hylanda:block/left_smithy"
+		},
+		"parts=right": {
+			"model": "hylanda:block/right_smithy"
+		}
+	}
+}

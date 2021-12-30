@@ -1,0 +1,13 @@
+{
+	"variants": {
+		"type=bottom": {
+			"model": "hylanda:block/bioquoia_slab"
+		},
+		"type=double": {
+			"model": "hylanda:block/bioquoia_planks"
+		},
+		"type=top": {
+			"model": "hylanda:block/bioquoia_slab_top"
+		}
+	}
+}
