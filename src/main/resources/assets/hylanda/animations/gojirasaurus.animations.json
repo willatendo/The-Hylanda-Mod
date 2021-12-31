@@ -1,7 +1,7 @@
 {
 	"format_version": "1.8.0",
 	"animations": {
-		"animation.gojirasaurus.sleeping": {
+		"sleeping": {
 			"loop": true,
 			"animation_length": 2.08,
 			"bones": {
@@ -76,7 +76,7 @@
 				}
 			}
 		},
-		"animation.gojirasaurus.threaten": {
+		"threaten": {
 			"animation_length": 1.28,
 			"bones": {
 				"body": {
@@ -227,7 +227,7 @@
 				}
 			}
 		},
-		"animation.gojirasaurus.laser.attack": {
+		"laser.attack": {
 			"animation_length": 2.6,
 			"bones": {
 				"body": {
@@ -388,7 +388,7 @@
 				}
 			}
 		},
-		"animation.gojirasaurus.bite.attack": {
+		"bite.attack": {
 			"animation_length": 0.76,
 			"bones": {
 				"neck": {
@@ -535,7 +535,7 @@
 				}
 			}
 		},
-		"animation.gojirasaurus.swim": {
+		"swim": {
 			"loop": true,
 			"animation_length": 1.04,
 			"bones": {
@@ -663,7 +663,7 @@
 				}
 			}
 		},
-		"animation.gojirasaurus.walk": {
+		"walk": {
 			"loop": true,
 			"animation_length": 1.04,
 			"bones": {
@@ -829,7 +829,7 @@
 				}
 			}
 		},
-		"animation.gojirasaurus.swipe.attack": {
+		"swipe.attack": {
 			"animation_length": 0.92,
 			"bones": {
 				"arm_1": {
@@ -944,7 +944,7 @@
 				}
 			}
 		},
-		"animation.gojirasaurus.idle": {
+		"idle": {
 			"loop": true,
 			"animation_length": 1.04,
 			"bones": {
