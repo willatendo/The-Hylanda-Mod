@@ -5,35 +5,29 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
-public class ModTab extends ItemGroup
-{
+public class ModTab extends ItemGroup {
 	public ItemStack itemIcon;
-	
-	public ModTab(String tabId) 
-	{
+
+	public ModTab(String tabId) {
 		super(ModUtils.ID + "." + tabId);
 	}
-	
+
 	@Override
-	public ResourceLocation getBackgroundImage() 
-	{
+	public ResourceLocation getBackgroundImage() {
 		return new ResourceLocation("textures/gui/container/creative_inventory/tab_item_search.png");
 	}
-	
+
 	@Override
-	public boolean hasSearchBar() 
-	{
+	public boolean hasSearchBar() {
 		return true;
 	}
-	
+
 	@Override
-	public ItemStack makeIcon() 
-	{
+	public ItemStack makeIcon() {
 		return itemIcon;
 	}
-	
-	public void setIcon(ItemStack icon)
-	{
+
+	public void setIcon(ItemStack icon) {
 		this.itemIcon = icon;
 	}
 }

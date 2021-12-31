@@ -12,15 +12,12 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.items.ItemHandlerHelper;
 
 @EventBusSubscriber(modid = ModUtils.ID, bus = Bus.FORGE)
-public class ServerEvent 
-{
+public class ServerEvent {
 	@SubscribeEvent
-	public static void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) 
-	{
+	public static void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
 		CompoundNBT playerData = event.getPlayer().getPersistentData();
 		CompoundNBT data = playerData.getCompound(PlayerEntity.PERSISTED_NBT_TAG);
-		if(data != null && !data.getBoolean("has_hylanda_book")) 
-		{
+		if (data != null && !data.getBoolean("has_hylanda_book")) {
 			ItemHandlerHelper.giveItemToPlayer(event.getPlayer(), new ItemStack(ItemInit.GUIDE_BOOK));
 			data.putBoolean("has_hylanda_book", true);
 			playerData.put(PlayerEntity.PERSISTED_NBT_TAG, data);

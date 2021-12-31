@@ -18,57 +18,46 @@ import net.minecraft.world.lighting.LightEngine;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.IPlantable;
 
-public class BioquoiaGrassBlock extends Block
-{
-	public BioquoiaGrassBlock() 
-	{
+public class BioquoiaGrassBlock extends Block {
+	public BioquoiaGrassBlock() {
 		super(AbstractBlock.Properties.of(Material.DIRT, MaterialColor.DIRT).strength(0.5F).randomTicks().sound(SoundType.GRAVEL));
 	}
-	
+
 	@Override
-	public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) 
-	{
-		if(!worldIn.isClientSide()) 
-		{
-			if(!worldIn.isAreaLoaded(pos, 3)) return;
-			if(!isLightEnough(state, worldIn, pos)) 
-			{
+	public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
+		if (!worldIn.isClientSide()) {
+			if (!worldIn.isAreaLoaded(pos, 3))
+				return;
+			if (!isLightEnough(state, worldIn, pos)) {
 				worldIn.setBlockAndUpdate(pos, Blocks.DIRT.defaultBlockState());
-			} 
-			else if(worldIn.getMaxLocalRawBrightness(pos.above()) >= 9) 
-			{
+			} else if (worldIn.getMaxLocalRawBrightness(pos.above()) >= 9) {
 				BlockState blockstate = this.defaultBlockState();
-				
-				for(int i = 0; i < 4; ++i) 
-				{
+
+				for (int i = 0; i < 4; ++i) {
 					BlockPos blockpos = pos.offset(random.nextInt(3) - 1, random.nextInt(5) - 3, random.nextInt(3) - 1);
-					if(worldIn.getBlockState(blockpos).getBlock() == Blocks.DIRT && isValidBonemealTargetGrass(blockstate, worldIn, blockpos))
-					{
+					if (worldIn.getBlockState(blockpos).getBlock() == Blocks.DIRT && isValidBonemealTargetGrass(blockstate, worldIn, blockpos)) {
 						worldIn.setBlockAndUpdate(blockpos, blockstate);
 					}
 				}
 			}
 		}
 	}
-	
-	private static boolean isLightEnough(BlockState state, IWorldReader reader, BlockPos pos) 
-	{
+
+	private static boolean isLightEnough(BlockState state, IWorldReader reader, BlockPos pos) {
 		BlockPos blockpos = pos.above();
 		BlockState blockstate = reader.getBlockState(blockpos);
-		
+
 		int i = LightEngine.getLightBlockInto(reader, state, pos, blockstate, blockpos, Direction.UP, blockstate.getLightBlock(reader, blockpos));
 		return i < reader.getMaxLightLevel();
 	}
-	
-	private static boolean isValidBonemealTargetGrass(BlockState state, IWorldReader reader, BlockPos pos) 
-	{
+
+	private static boolean isValidBonemealTargetGrass(BlockState state, IWorldReader reader, BlockPos pos) {
 		BlockPos blockpos = pos.above();
 		return isLightEnough(state, reader, pos) && !reader.getFluidState(blockpos).is(FluidTags.WATER);
 	}
-	
+
 	@Override
-	public boolean canSustainPlant(BlockState state, IBlockReader world, BlockPos pos, Direction facing, IPlantable plantable) 
-	{
+	public boolean canSustainPlant(BlockState state, IBlockReader world, BlockPos pos, Direction facing, IPlantable plantable) {
 		return true;
 	}
 }

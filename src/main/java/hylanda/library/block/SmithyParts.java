@@ -2,20 +2,17 @@ package hylanda.library.block;
 
 import net.minecraft.util.IStringSerializable;
 
-public enum SmithyParts implements IStringSerializable
-{
-	RIGHT("right"),
-	LEFT("left");	
-	private final String id;
+public enum SmithyParts implements IStringSerializable {
+	ANVIL,
+	LEFT,
+	RIGHT;
 
-	private SmithyParts(String id) 
-	{
-		this.id = id;
+	public String toString() {
+		return this.getSerializedName();
 	}
-	
+
 	@Override
-	public String getSerializedName() 
-	{
-		return this.id;
+	public String getSerializedName() {
+		return this == ANVIL ? "anvil" : this == LEFT ? "left" : "right";
 	}
 }

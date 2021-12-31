@@ -49,7 +49,7 @@ repositories {
 dependencies {
     minecraft 'net.minecraftforge:forge:1.16.5-36.2.8'
     
-    implementation fg.deobf("curse.maven:tyrannotitan-library-forge-425570:3487375")
+	implementation fg.deobf("curse.maven:tyrannotitan-library-forge-425570:3540881")
 }
 
 jar {

@@ -18,24 +18,20 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
 @EventBusSubscriber(modid = ModUtils.ID, bus = Bus.MOD, value = Dist.CLIENT)
-public class ClientSetup 
-{
+public class ClientSetup {
 	@SubscribeEvent
-	public static void clientSetup(FMLClientSetupEvent event)
-	{		
+	public static void clientSetup(FMLClientSetupEvent event) {
 		RenderTypeLookup.setRenderLayer(BlockInit.BIOQUOIA_LEAVES, RenderType.cutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.BIOQUOIA_SAPLING, RenderType.cutout());
-		
+
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.GOJIRASAURUS, manager -> new GojirasaurusRender(manager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInit.BIO_DEER, manager -> new BioDeerRender(manager));
 	}
-	
-	public static ItemColors itemColourSetup()
-	{
+
+	public static ItemColors itemColourSetup() {
 		ItemColors itemcolours = new ItemColors();
-		itemcolours.register((stack, dye) -> 
-		{
-			return dye > 0 ? -1 : ((IDyeableArmorItem)stack.getItem()).getColor(stack);
+		itemcolours.register((stack, dye) -> {
+			return dye > 0 ? -1 : ((IDyeableArmorItem) stack.getItem()).getColor(stack);
 		}, ItemInit.LEATHER_BIO_DEER_ARMOUR);
 		return itemcolours;
 	}

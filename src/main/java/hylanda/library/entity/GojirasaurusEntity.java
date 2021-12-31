@@ -25,49 +25,39 @@ import tyrannotitanlib.library.tyrannomation.core.event.predicate.TyrannomationE
 import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationData;
 import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationFactory;
 
-public class GojirasaurusEntity extends AnimalEntity implements ITyrannomatable
-{
+public class GojirasaurusEntity extends AnimalEntity implements ITyrannomatable {
 	private TyrannomationFactory factory = new TyrannomationFactory(this);
-	
-	private <E extends ITyrannomatable> PlayState predicate(TyrannomationEvent<E> event) 
-	{				
-		if(event.isMoving())
-		{
+
+	private <E extends ITyrannomatable> PlayState predicate(TyrannomationEvent<E> event) {
+		if (event.isMoving()) {
 			event.getController().setAnimation(new TyrannomationBuilder().addAnimation("animation.gojirasaurus.walk", true));
-		}
-		else
-		{
+		} else {
 			event.getController().setAnimation(new TyrannomationBuilder().addAnimation("animation.gojirasaurus.idle", true));
 		}
-		
+
 		return PlayState.CONTINUE;
 	}
-	
-	public GojirasaurusEntity(EntityType<? extends GojirasaurusEntity> entity, World world) 
-	{
+
+	public GojirasaurusEntity(EntityType<? extends GojirasaurusEntity> entity, World world) {
 		super(entity, world);
 	}
-	
-	public static AttributeModifierMap.MutableAttribute makeAttributes() 
-	{
+
+	public static AttributeModifierMap.MutableAttribute makeAttributes() {
 		return MobEntity.createMobAttributes().add(Attributes.MAX_HEALTH, 250.0D).add(Attributes.MOVEMENT_SPEED, 0.2F).add(Attributes.ATTACK_DAMAGE, 21.0D).add(Attributes.FOLLOW_RANGE, 35.0D);
-	} 
-	
+	}
+
 	@Override
-	public void registerControllers(TyrannomationData data) 
-	{
+	public void registerControllers(TyrannomationData data) {
 		data.addAnimationController(new TyrannomationController<ITyrannomatable>(this, "controller", 0, this::predicate));
 	}
-	
+
 	@Override
-	public TyrannomationFactory getFactory() 
-	{
+	public TyrannomationFactory getFactory() {
 		return this.factory;
 	}
-	
+
 	@Override
-	protected void registerGoals() 
-	{
+	protected void registerGoals() {
 		this.goalSelector.addGoal(0, new SwimGoal(this));
 		this.goalSelector.addGoal(1, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
 		this.goalSelector.addGoal(2, new BreedGoal(this, 1.0D));
@@ -77,10 +67,9 @@ public class GojirasaurusEntity extends AnimalEntity implements ITyrannomatable
 		this.targetSelector.addGoal(6, new NearestAttackableTargetGoal<>(this, BioDeerEntity.class, false));
 		this.targetSelector.addGoal(6, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, true));
 	}
-	
+
 	@Override
-	public AgeableEntity getBreedOffspring(ServerWorld world, AgeableEntity entity) 
-	{
+	public AgeableEntity getBreedOffspring(ServerWorld world, AgeableEntity entity) {
 		return EntityInit.GOJIRASAURUS.create(world);
 	}
 }
