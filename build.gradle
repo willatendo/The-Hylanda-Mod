@@ -7,6 +7,7 @@ buildscript {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
     }
 }
+
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
@@ -15,10 +16,10 @@ version = '1.0.0'
 group = 'hylanda'
 archivesBaseName = 'hylanda'
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(8)
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 minecraft {
-    mappings channel: 'official', version: '1.16.5'
+    mappings channel: 'official', version: '1.18.1'
     
     runs {
         client {
@@ -47,9 +48,9 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.16.5-36.2.8'
+	minecraft 'net.minecraftforge:forge:1.18.1-39.0.17'
     
-	implementation fg.deobf("curse.maven:tyrannotitan-library-forge-425570:3540881")
+	implementation fg.deobf("curse.maven:tyrannotitan-library-forge-425570:3599363")
 }
 
 jar {

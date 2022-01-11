@@ -1,15 +1,15 @@
 package hylanda.library.tab;
 
 import hylanda.library.util.ModUtils;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
+import tyrannotitanlib.library.base.itemgroup.TabBuilder;
 
-public class ModTab extends ItemGroup {
+public class ModTab extends TabBuilder {
 	public ItemStack itemIcon;
 
 	public ModTab(String tabId) {
-		super(ModUtils.ID + "." + tabId);
+		super(ModUtils.ID, tabId);
 	}
 
 	@Override
@@ -24,7 +24,7 @@ public class ModTab extends ItemGroup {
 
 	@Override
 	public ItemStack makeIcon() {
-		return itemIcon;
+		return this.itemIcon;
 	}
 
 	public void setIcon(ItemStack icon) {

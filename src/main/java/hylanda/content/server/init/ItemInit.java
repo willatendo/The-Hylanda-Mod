@@ -1,14 +1,14 @@
 package hylanda.content.server.init;
 
-import hylanda.library.item.DyeableBioDeerArmour;
 import hylanda.library.item.BasicItem;
-import hylanda.library.item.ModSpawnEggItem;
+import hylanda.library.item.DyeableBioDeerArmour;
 import hylanda.library.util.ModUtils;
-import net.minecraft.item.Food;
-import net.minecraft.item.Item;
-import net.minecraft.item.Item.Properties;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.potion.Effects;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Item.Properties;
+import net.minecraftforge.common.ForgeSpawnEggItem;
 import tyrannotitanlib.library.tyrannoregister.TyrannoRegister;
 
 public class ItemInit {
@@ -31,7 +31,7 @@ public class ItemInit {
 	public static final Item GUIDE_BOOK = BasicItem.create("guide_book");
 	public static final Item OLD_BOOK = BasicItem.create("old_book");
 
-	public static final Item BEEF_AND_VEGETABLES = BasicItem.create("beef_and_vegetables", new Food.Builder().nutrition(10).saturationMod(10.0F).effect(() -> new EffectInstance(Effects.POISON, 600, 0), 0.4F).build());
+	public static final Item BEEF_AND_VEGETABLES = BasicItem.create("beef_and_vegetables", new FoodProperties.Builder().nutrition(10).saturationMod(10.0F).effect(() -> new MobEffectInstance(MobEffects.POISON, 600, 0), 0.4F).build());
 
 	public static final Item ENERGISED_SPEAR = BasicItem.create("energised_spear", new Properties().tab(ModUtils.WEAPONS).stacksTo(1));
 	public static final Item ENERGISED_HATCHET = BasicItem.create("energised_hatchet", new Properties().tab(ModUtils.TOOLS).stacksTo(1));
@@ -56,8 +56,8 @@ public class ItemInit {
 	public static final Item DIAMOND_BIO_DEER_ARMOUR = BasicItem.create("diamond_bio_deer_armour", new Properties().tab(ModUtils.ITEMS).stacksTo(1));
 	public static final Item NETHERITE_BIO_DEER_ARMOUR = BasicItem.create("netherite_bio_deer_armour", new Properties().tab(ModUtils.ITEMS).stacksTo(1));
 
-	public static final Item GOJIRASAURUS_SPAWN_EGG = register("gojirasaurus_spawn_egg", new ModSpawnEggItem(() -> EntityInit.GOJIRASAURUS, 0x1e1e1c, 0x5d1311, new Item.Properties().tab(ModUtils.SPAWN_EGGS)));
-	public static final Item BIO_DEER_SPAWN_EGG = register("bio_deer_spawn_egg", new ModSpawnEggItem(() -> EntityInit.BIO_DEER, 0x5cab9f, 0xb26d43, new Item.Properties().tab(ModUtils.SPAWN_EGGS)));
+	public static final Item GOJIRASAURUS_SPAWN_EGG = register("gojirasaurus_spawn_egg", new ForgeSpawnEggItem(() -> EntityInit.GOJIRASAURUS, 0x1e1e1c, 0x5d1311, new Item.Properties().tab(ModUtils.SPAWN_EGGS)));
+	public static final Item BIO_DEER_SPAWN_EGG = register("bio_deer_spawn_egg", new ForgeSpawnEggItem(() -> EntityInit.BIO_DEER, 0x5cab9f, 0xb26d43, new Item.Properties().tab(ModUtils.SPAWN_EGGS)));
 
 	public static void init() {
 	}

@@ -3,23 +3,23 @@ package hylanda.library.entity;
 import hylanda.content.server.init.EntityInit;
 import hylanda.library.entity.goal.GojirasaurusAttackGoal;
 import hylanda.library.entity.goal.GojirasaurusSwimGoal;
-import net.minecraft.entity.AgeableEntity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.MobEntity;
-import net.minecraft.entity.ai.attributes.AttributeModifierMap;
-import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.ai.goal.BreedGoal;
-import net.minecraft.entity.ai.goal.LookAtGoal;
-import net.minecraft.entity.ai.goal.LookRandomlyGoal;
-import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
-import net.minecraft.entity.ai.goal.WaterAvoidingRandomWalkingGoal;
-import net.minecraft.entity.passive.AnimalEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.network.datasync.DataParameter;
-import net.minecraft.network.datasync.DataSerializers;
-import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.AgeableMob;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.goal.BreedGoal;
+import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
+import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
+import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
 import tyrannotitanlib.library.tyrannomation.core.ITyrannomatable;
 import tyrannotitanlib.library.tyrannomation.core.PlayState;
 import tyrannotitanlib.library.tyrannomation.core.builder.TyrannomationBuilder;
@@ -28,10 +28,10 @@ import tyrannotitanlib.library.tyrannomation.core.event.predicate.TyrannomationE
 import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationData;
 import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationFactory;
 
-public class GojirasaurusEntity extends AnimalEntity implements ITyrannomatable {
+public class GojirasaurusEntity extends Animal implements ITyrannomatable {
 	private TyrannomationFactory factory = new TyrannomationFactory(this);
 
-	public static final DataParameter<Byte> ANIMATION = EntityDataManager.defineId(GojirasaurusEntity.class, DataSerializers.BYTE);
+	public static final EntityDataAccessor<Byte> ANIMATION = SynchedEntityData.defineId(GojirasaurusEntity.class, EntityDataSerializers.BYTE);
 
 	public static final byte ANIMATION_IDLE = 0;
 	public static final byte ANIMATION_SLEEP = 1;
@@ -79,7 +79,7 @@ public class GojirasaurusEntity extends AnimalEntity implements ITyrannomatable 
 		return PlayState.CONTINUE;
 	}
 
-	public GojirasaurusEntity(EntityType<? extends GojirasaurusEntity> entity, World world) {
+	public GojirasaurusEntity(EntityType<? extends GojirasaurusEntity> entity, Level world) {
 		super(entity, world);
 	}
 	
@@ -89,8 +89,8 @@ public class GojirasaurusEntity extends AnimalEntity implements ITyrannomatable 
 		this.entityData.define(ANIMATION, ANIMATION_IDLE);
 	}
 
-	public static AttributeModifierMap.MutableAttribute makeAttributes() {
-		return MobEntity.createMobAttributes().add(Attributes.MAX_HEALTH, 250.0D).add(Attributes.MOVEMENT_SPEED, 0.2F).add(Attributes.ATTACK_DAMAGE, 21.0D).add(Attributes.FOLLOW_RANGE, 35.0D);
+	public static AttributeSupplier makeAttributes() {
+		return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 250.0D).add(Attributes.MOVEMENT_SPEED, 0.2F).add(Attributes.ATTACK_DAMAGE, 21.0D).add(Attributes.FOLLOW_RANGE, 35.0D).build();
 	}
 
 	@Override
@@ -106,18 +106,13 @@ public class GojirasaurusEntity extends AnimalEntity implements ITyrannomatable 
 	@Override
 	protected void registerGoals() {
 		this.goalSelector.addGoal(0, new GojirasaurusSwimGoal(this));
-		this.goalSelector.addGoal(1, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
+		this.goalSelector.addGoal(1, new WaterAvoidingRandomStrollGoal(this, 1.0D));
 		this.goalSelector.addGoal(2, new BreedGoal(this, 1.0D));
-		this.goalSelector.addGoal(3, new LookAtGoal(this, PlayerEntity.class, 6.0F));
-		this.goalSelector.addGoal(4, new LookRandomlyGoal(this));
+		this.goalSelector.addGoal(3, new LookAtPlayerGoal(this, Player.class, 6.0F));
+		this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
 		this.goalSelector.addGoal(5, new GojirasaurusAttackGoal(this, 1.2F, false));
 		this.targetSelector.addGoal(6, new NearestAttackableTargetGoal<>(this, BioDeerEntity.class, false));
-		this.targetSelector.addGoal(6, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, true));
-	}
-
-	@Override
-	public AgeableEntity getBreedOffspring(ServerWorld world, AgeableEntity entity) {
-		return EntityInit.GOJIRASAURUS.create(world);
+		this.targetSelector.addGoal(6, new NearestAttackableTargetGoal<>(this, Player.class, true));
 	}
 
 	public void setAnimation(byte animation) {
@@ -126,5 +121,10 @@ public class GojirasaurusEntity extends AnimalEntity implements ITyrannomatable 
 
 	public byte getAnimation() {
 		return this.entityData.get(ANIMATION);
+	}
+
+	@Override
+	public AgeableMob getBreedOffspring(ServerLevel world, AgeableMob entity) {
+		return EntityInit.GOJIRASAURUS.create(world);
 	}
 }

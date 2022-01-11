@@ -39,5 +39,7 @@ public class HylandaMod {
 
 	private void clientSetup(FMLClientSetupEvent event) {
 		ClientSetup.itemColourSetup();
+		ClientSetup.setupBlock();
+		ClientSetup.setupEntity();
 	}
 }

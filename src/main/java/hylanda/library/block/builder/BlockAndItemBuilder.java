@@ -3,9 +3,9 @@ package hylanda.library.block.builder;
 import hylanda.content.server.init.BlockInit;
 import hylanda.content.server.init.ItemInit;
 import hylanda.library.util.ModUtils;
-import net.minecraft.block.Block;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item.Properties;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item.Properties;
 
 public class BlockAndItemBuilder {
 	public static Block create(String id, Block block) {

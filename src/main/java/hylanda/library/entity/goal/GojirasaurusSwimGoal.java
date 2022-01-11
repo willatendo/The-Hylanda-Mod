@@ -1,9 +1,9 @@
 package hylanda.library.entity.goal;
 
 import hylanda.library.entity.GojirasaurusEntity;
-import net.minecraft.entity.ai.goal.SwimGoal;
+import net.minecraft.world.entity.ai.goal.FloatGoal;
 
-public class GojirasaurusSwimGoal extends SwimGoal {
+public class GojirasaurusSwimGoal extends FloatGoal {
 	public final GojirasaurusEntity entity;
 
 	public GojirasaurusSwimGoal(GojirasaurusEntity entity) {

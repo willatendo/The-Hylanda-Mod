@@ -1,7 +1,7 @@
 package hylanda.library.entity.goal;
 
 import hylanda.library.entity.BioDeerEntity;
-import net.minecraft.entity.ai.goal.MeleeAttackGoal;
+import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 
 public class BioDeerMeleeAttackGoal extends MeleeAttackGoal {
 	private final BioDeerEntity entity;

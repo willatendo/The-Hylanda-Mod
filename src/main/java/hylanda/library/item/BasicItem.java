@@ -2,8 +2,8 @@ package hylanda.library.item;
 
 import hylanda.content.server.init.ItemInit;
 import hylanda.library.util.ModUtils;
-import net.minecraft.item.Food;
-import net.minecraft.item.Item;
+import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.Item;
 
 public class BasicItem extends Item {
 	public BasicItem() {
@@ -22,11 +22,11 @@ public class BasicItem extends Item {
 		return ItemInit.register(id, new Item(properties));
 	}
 
-	public static Item create(String id, Food food) {
+	public static Item create(String id, FoodProperties food) {
 		return ItemInit.register(id, new Item(new Properties().tab(ModUtils.ITEMS).food(food)));
 	}
 
-	public static Item create(String id, Properties properties, Food food) {
+	public static Item create(String id, Properties properties, FoodProperties food) {
 		return ItemInit.register(id, new Item(properties.food(food)));
 	}
 }

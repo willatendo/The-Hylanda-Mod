@@ -1,11 +1,11 @@
 modLoader="javafml"
-loaderVersion="[36,)" 
+loaderVersion="[39,)" 
 license="All Rights Reserved"
 # issueTrackerURL=""
 
 [[mods]]
 modId="hylanda"
-version="v1-Alpha"
+version="1-Alpha"
 displayName="The Hylanda Mod"
 # updateJSONURL=""
 # displayURL=""
@@ -18,14 +18,14 @@ The base idea of the mod is to add unique creatures to your world but there is a
 [[dependencies.hylanda]]
     modId="forge"
     mandatory=true
-    versionRange="[36,)"
+    versionRange="[39,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.hylanda]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.16.5,1.17)"
+    versionRange="[1.18.1,1.19)"
     ordering="NONE"
     side="BOTH"
 
@@ -33,6 +33,6 @@ The base idea of the mod is to add unique creatures to your world but there is a
 [[dependencies.hylanda]]
     modId="tyrannotitanlib"
     mandatory=true
-    versionRange="[v1.2.2,)"
+    versionRange="[v3.0.0,)"
     ordering="NONE"
     side="BOTH"

@@ -1,8 +1,8 @@
 package hylanda.library.block;
 
-import net.minecraft.util.IStringSerializable;
+import net.minecraft.util.StringRepresentable;
 
-public enum SmithyParts implements IStringSerializable {
+public enum SmithyParts implements StringRepresentable {
 	ANVIL,
 	LEFT,
 	RIGHT;

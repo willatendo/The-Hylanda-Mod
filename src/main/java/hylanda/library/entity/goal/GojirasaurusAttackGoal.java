@@ -3,12 +3,12 @@ package hylanda.library.entity.goal;
 import java.util.EnumSet;
 
 import hylanda.library.entity.GojirasaurusEntity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.ai.goal.Goal;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.pathfinding.Path;
-import net.minecraft.util.EntityPredicates;
-import net.minecraft.util.Hand;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.EntitySelector;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.goal.Goal;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.pathfinder.Path;
 
 public class GojirasaurusAttackGoal extends Goal {
 	protected final GojirasaurusEntity entity;
@@ -73,7 +73,7 @@ public class GojirasaurusAttackGoal extends Goal {
 		} else if (!this.entity.isWithinRestriction(livingentity.blockPosition())) {
 			return false;
 		} else {
-			return !(livingentity instanceof PlayerEntity) || !livingentity.isSpectator() && !((PlayerEntity) livingentity).isCreative();
+			return !(livingentity instanceof Player) || !livingentity.isSpectator() && !((Player) livingentity).isCreative();
 		}
 	}
 
@@ -86,7 +86,7 @@ public class GojirasaurusAttackGoal extends Goal {
 
 	public void stop() {
 		LivingEntity livingentity = this.entity.getTarget();
-		if (!EntityPredicates.NO_CREATIVE_OR_SPECTATOR.test(livingentity)) {
+		if (!EntitySelector.NO_CREATIVE_OR_SPECTATOR.test(livingentity)) {
 			this.entity.setTarget((LivingEntity) null);
 		}
 
@@ -100,7 +100,7 @@ public class GojirasaurusAttackGoal extends Goal {
 		this.entity.getLookControl().setLookAt(livingentity, 30.0F, 30.0F);
 		double d0 = this.entity.distanceToSqr(livingentity.getX(), livingentity.getY(), livingentity.getZ());
 		this.ticksUntilNextPathRecalculation = Math.max(this.ticksUntilNextPathRecalculation - 1, 0);
-		if ((this.followingTargetEvenIfNotSeen || this.entity.getSensing().canSee(livingentity)) && this.ticksUntilNextPathRecalculation <= 0 && (this.pathedTargetX == 0.0D && this.pathedTargetY == 0.0D && this.pathedTargetZ == 0.0D || livingentity.distanceToSqr(this.pathedTargetX, this.pathedTargetY, this.pathedTargetZ) >= 1.0D || this.entity.getRandom().nextFloat() < 0.05F)) {
+		if ((this.followingTargetEvenIfNotSeen || this.entity.getSensing().hasLineOfSight(livingentity)) && this.ticksUntilNextPathRecalculation <= 0 && (this.pathedTargetX == 0.0D && this.pathedTargetY == 0.0D && this.pathedTargetZ == 0.0D || livingentity.distanceToSqr(this.pathedTargetX, this.pathedTargetY, this.pathedTargetZ) >= 1.0D || this.entity.getRandom().nextFloat() < 0.05F)) {
 			this.pathedTargetX = livingentity.getX();
 			this.pathedTargetY = livingentity.getY();
 			this.pathedTargetZ = livingentity.getZ();
@@ -108,7 +108,7 @@ public class GojirasaurusAttackGoal extends Goal {
 			if (this.canPenalize) {
 				this.ticksUntilNextPathRecalculation += failedPathFindingPenalty;
 				if (this.entity.getNavigation().getPath() != null) {
-					net.minecraft.pathfinding.PathPoint finalPathPoint = this.entity.getNavigation().getPath().getEndNode();
+					net.minecraft.world.level.pathfinder.Node finalPathPoint = this.entity.getNavigation().getPath().getEndNode();
 					if (finalPathPoint != null && livingentity.distanceToSqr(finalPathPoint.x, finalPathPoint.y, finalPathPoint.z) < 1)
 						failedPathFindingPenalty = 0;
 					else
@@ -136,7 +136,7 @@ public class GojirasaurusAttackGoal extends Goal {
 		double d0 = this.getAttackReachSqr(entity);
 		if (distance <= d0 && this.ticksUntilNextAttack <= 0) {
 			this.resetAttackCooldown();
-			this.entity.swing(Hand.MAIN_HAND);
+			this.entity.swing(InteractionHand.MAIN_HAND);
 			this.entity.doHurtTarget(entity);
 			this.entity.setAnimation(GojirasaurusEntity.ANIMATION_BITE_ATTACK);
 		}
