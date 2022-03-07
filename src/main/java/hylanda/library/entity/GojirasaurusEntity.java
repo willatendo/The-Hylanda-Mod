@@ -1,6 +1,6 @@
 package hylanda.library.entity;
 
-import hylanda.content.server.init.EntityInit;
+import hylanda.content.server.init.HylandaEntities;
 import hylanda.library.entity.goal.GojirasaurusAttackGoal;
 import hylanda.library.entity.goal.GojirasaurusSwimGoal;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -20,16 +20,16 @@ import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import tyrannotitanlib.library.tyrannomation.core.ITyrannomatable;
-import tyrannotitanlib.library.tyrannomation.core.PlayState;
-import tyrannotitanlib.library.tyrannomation.core.builder.TyrannomationBuilder;
-import tyrannotitanlib.library.tyrannomation.core.controller.TyrannomationController;
-import tyrannotitanlib.library.tyrannomation.core.event.predicate.TyrannomationEvent;
-import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationData;
-import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationFactory;
+import tyrannotitanlib.tyrannimation.core.AnimationEndTypes;
+import tyrannotitanlib.tyrannimation.core.IAnimated;
+import tyrannotitanlib.tyrannimation.core.builder.AnimationBuilder;
+import tyrannotitanlib.tyrannimation.core.controller.AnimationController;
+import tyrannotitanlib.tyrannimation.core.event.predicate.AnimationEvent;
+import tyrannotitanlib.tyrannimation.core.manager.AnimatedData;
+import tyrannotitanlib.tyrannimation.core.manager.AnimatedFactory;
 
-public class GojirasaurusEntity extends Animal implements ITyrannomatable {
-	private TyrannomationFactory factory = new TyrannomationFactory(this);
+public class GojirasaurusEntity extends Animal implements IAnimated {
+	private AnimatedFactory factory = new AnimatedFactory(this);
 
 	public static final EntityDataAccessor<Byte> ANIMATION = SynchedEntityData.defineId(GojirasaurusEntity.class, EntityDataSerializers.BYTE);
 
@@ -41,18 +41,18 @@ public class GojirasaurusEntity extends Animal implements ITyrannomatable {
 	public static final byte ANIMATION_SWIM = 5;
 	public static final byte ANIMATION_SWIPE_ATTACK = 6;
 
-	public static final TyrannomationBuilder IDLE_ANIMATION = new TyrannomationBuilder().addAnimation("idle", true);
-	public static final TyrannomationBuilder SLEEP_ANIMATION = new TyrannomationBuilder().addAnimation("sleep", true);
-	public static final TyrannomationBuilder LASER_ATTACK_ANIMATION = new TyrannomationBuilder().addAnimation("threaten").addAnimation("laser.attack", true);
-	public static final TyrannomationBuilder BITE_ATTACK_ANIMATION = new TyrannomationBuilder().addAnimation("threaten").addAnimation("bite.attack", true);
-	public static final TyrannomationBuilder WALK_ANIMATION = new TyrannomationBuilder().addAnimation("walk", true);
-	public static final TyrannomationBuilder SWIM_ANIMATION = new TyrannomationBuilder().addAnimation("swim", true);
-	public static final TyrannomationBuilder SWIPE_ATTACK_ANIMATION = new TyrannomationBuilder().addAnimation("threaten").addAnimation("swipe.attack", true);
+	public static final AnimationBuilder IDLE_ANIMATION = new AnimationBuilder().addAnimation("idle", true);
+	public static final AnimationBuilder SLEEP_ANIMATION = new AnimationBuilder().addAnimation("sleep", true);
+	public static final AnimationBuilder LASER_ATTACK_ANIMATION = new AnimationBuilder().addAnimation("threaten").addAnimation("laser.attack", true);
+	public static final AnimationBuilder BITE_ATTACK_ANIMATION = new AnimationBuilder().addAnimation("threaten").addAnimation("bite.attack", true);
+	public static final AnimationBuilder WALK_ANIMATION = new AnimationBuilder().addAnimation("walk", true);
+	public static final AnimationBuilder SWIM_ANIMATION = new AnimationBuilder().addAnimation("swim", true);
+	public static final AnimationBuilder SWIPE_ATTACK_ANIMATION = new AnimationBuilder().addAnimation("threaten").addAnimation("swipe.attack", true);
 
-	private <E extends ITyrannomatable> PlayState predicate(TyrannomationEvent<E> event) {
+	private <E extends IAnimated> AnimationEndTypes predicate(AnimationEvent<E> event) {
 		float limbSwingAmount = event.getLimbSwingAmount();
 		boolean isMoving = !(limbSwingAmount > -0.05F && limbSwingAmount < 0.05F);
-		TyrannomationController controller = event.getController();
+		AnimationController controller = event.getController();
 
 		byte currentAnimation = this.getAnimation();
 		switch (currentAnimation) {
@@ -76,13 +76,13 @@ public class GojirasaurusEntity extends Animal implements ITyrannomatable {
 			break;
 		}
 
-		return PlayState.CONTINUE;
+		return AnimationEndTypes.CONTINUE;
 	}
 
 	public GojirasaurusEntity(EntityType<? extends GojirasaurusEntity> entity, Level world) {
 		super(entity, world);
 	}
-	
+
 	@Override
 	protected void defineSynchedData() {
 		super.defineSynchedData();
@@ -94,12 +94,12 @@ public class GojirasaurusEntity extends Animal implements ITyrannomatable {
 	}
 
 	@Override
-	public void registerControllers(TyrannomationData data) {
-		data.addAnimationController(new TyrannomationController<ITyrannomatable>(this, "controller", 0, this::predicate));
+	public void registerAnimationControl(AnimatedData data) {
+		data.addAnimatedController(new AnimationController<IAnimated>(this, "controller", 0, this::predicate));
 	}
 
 	@Override
-	public TyrannomationFactory getFactory() {
+	public AnimatedFactory getAnimationFactory() {
 		return this.factory;
 	}
 
@@ -125,6 +125,6 @@ public class GojirasaurusEntity extends Animal implements ITyrannomatable {
 
 	@Override
 	public AgeableMob getBreedOffspring(ServerLevel world, AgeableMob entity) {
-		return EntityInit.GOJIRASAURUS.create(world);
+		return HylandaEntities.GOJIRASAURUS.get().create(world);
 	}
 }

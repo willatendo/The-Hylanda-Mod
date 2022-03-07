@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[39,)" 
+loaderVersion="[40,)" 
 license="All Rights Reserved"
 # issueTrackerURL=""
 
@@ -18,14 +18,14 @@ The base idea of the mod is to add unique creatures to your world but there is a
 [[dependencies.hylanda]]
     modId="forge"
     mandatory=true
-    versionRange="[39,)"
+    versionRange="[40,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.hylanda]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.18.1,1.19)"
+    versionRange="[1.18.2,1.19)"
     ordering="NONE"
     side="BOTH"
 
@@ -33,6 +33,6 @@ The base idea of the mod is to add unique creatures to your world but there is a
 [[dependencies.hylanda]]
     modId="tyrannotitanlib"
     mandatory=true
-    versionRange="[v3.0.0,)"
+    versionRange="[v4.1.2,)"
     ordering="NONE"
     side="BOTH"

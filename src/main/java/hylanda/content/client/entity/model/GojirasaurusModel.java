@@ -1,14 +1,17 @@
 package hylanda.content.client.entity.model;
 
 import hylanda.library.entity.GojirasaurusEntity;
-import hylanda.library.util.ModUtils;
 import net.minecraft.resources.ResourceLocation;
-import tyrannotitanlib.library.tyrannomation.model.TyrannomatedTyrannomationModel;
+import tyrannotitanlib.core.content.Util;
+import tyrannotitanlib.tyrannimation.core.event.predicate.AnimationEvent;
+import tyrannotitanlib.tyrannimation.core.processor.IAnimatedBone;
+import tyrannotitanlib.tyrannimation.model.AnimatedModel;
+import tyrannotitanlib.tyrannimation.model.provider.data.EntityModelData;
 
-public class GojirasaurusModel extends TyrannomatedTyrannomationModel<GojirasaurusEntity> {
-	private static final ResourceLocation MODEL = new ResourceLocation(ModUtils.ID, "geo/gojirasaurus.geo.json");
-	private static final ResourceLocation TEXTURE = new ResourceLocation(ModUtils.ID, "textures/model/entity/gojirasaurus/texture.png");
-	private static final ResourceLocation ANIMATION = new ResourceLocation(ModUtils.ID, "animations/gojirasaurus.animations.json");
+public class GojirasaurusModel extends AnimatedModel<GojirasaurusEntity> {
+	private static final ResourceLocation MODEL = Util.HYLANDA_UTILS.resource("geo/gojirasaurus.geo.json");
+	private static final ResourceLocation TEXTURE = Util.HYLANDA_UTILS.resource("textures/model/entity/gojirasaurus/texture.png");
+	private static final ResourceLocation ANIMATION = Util.HYLANDA_UTILS.resource("animations/gojirasaurus.animations.json");
 
 	@Override
 	public ResourceLocation getModelLocation(GojirasaurusEntity object) {
@@ -25,15 +28,14 @@ public class GojirasaurusModel extends TyrannomatedTyrannomationModel<Gojirasaur
 		return ANIMATION;
 	}
 
-//	@Override
-//	public void setLivingAnimations(GojirasaurusEntity entity, Integer uniqueID, TyrannomationEvent customPredicate) {
-//		super.setLivingAnimations(entity, uniqueID, customPredicate);
-//		IBone head = this.getBone("neck");
-//
-//		EntityModelData extraData = (EntityModelData) customPredicate.getExtraDataOfType(EntityModelData.class).get(0);
-//		if (head != null) {
-//			head.setRotationX(extraData.headPitch * ((float) Math.PI / 180F));
-//			head.setRotationY(extraData.netHeadYaw * ((float) Math.PI / 180F));
-//		}
-//	}
+	@Override
+	public void setLivingAnimations(GojirasaurusEntity entity, Integer uniqueID, AnimationEvent customPredicate) {
+		super.setLivingAnimations(entity, uniqueID, customPredicate);
+
+		IAnimatedBone head = this.getAnimationProcessor().getBone("head");
+
+		EntityModelData extraData = (EntityModelData) customPredicate.getExtraDataOfType(EntityModelData.class).get(0);
+		head.setRotationX(extraData.headPitch * ((float) Math.PI / 180F));
+		head.setRotationY(extraData.netHeadYaw * ((float) Math.PI / 180F));
+	}
 }

@@ -9,9 +9,9 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
-import tyrannotitanlib.library.tyrannomation.renderers.TyrannomationEntityRenderer;
+import tyrannotitanlib.tyrannimation.renderers.AnimatedEntityRenderer;
 
-public class BioDeerRender extends TyrannomationEntityRenderer<BioDeerEntity> {
+public class BioDeerRender extends AnimatedEntityRenderer<BioDeerEntity> {
 	public BioDeerRender(EntityRendererProvider.Context renderManager) {
 		super(renderManager, new BioDeerModel());
 		this.shadowRadius = 0.6F;

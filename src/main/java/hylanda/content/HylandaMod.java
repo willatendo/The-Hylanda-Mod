@@ -1,40 +1,44 @@
 package hylanda.content;
 
 import hylanda.content.client.setup.ClientSetup;
-import hylanda.content.server.init.BlockInit;
-import hylanda.content.server.init.ItemInit;
-import hylanda.library.util.ModRegistry;
-import hylanda.library.util.ModUtils;
-import net.minecraftforge.eventbus.api.IEventBus;
+import hylanda.content.server.init.HylandaBlocks;
+import hylanda.content.server.init.HylandaEntities;
+import hylanda.content.server.init.HylandaItems;
+import hylanda.library.tab.ModTab;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import tyrannotitanlib.library.base.block.TyrannoSignManager;
+import tyrannotitanlib.core.content.Util;
+import tyrannotitanlib.library.block.TyrannoSignManager;
 
-@Mod(ModUtils.ID)
+@Mod(Util.HYLANDA_ID)
 public class HylandaMod {
-	public HylandaMod() {
-		ModUtils.LOGGER.debug("Starting: Hylanda Registry");
+	public static final ModTab ITEMS = new ModTab("items");
+	public static final ModTab BLOCKS = new ModTab("blocks");
+	public static final ModTab TOOLS = new ModTab("tools");
+	public static final ModTab WEAPONS = new ModTab("weapons");
+	public static final ModTab SPAWN_EGGS = new ModTab("spawn_eggs");
 
-		final IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+	public HylandaMod() {
+		var bus = FMLJavaModLoadingContext.get().getModEventBus();
 		bus.addListener(this::clientSetup);
 		bus.addListener(this::commonSetup);
 
-		ModRegistry.registry();
-		
-		TyrannoSignManager.registerSignBlock(() -> BlockInit.BIOQUOIA_SIGN);
-		TyrannoSignManager.registerSignBlock(() -> BlockInit.BIOQUOIA_WALL_SIGN);
+		HylandaItems.init(bus);
+		HylandaBlocks.init(bus);
+		HylandaEntities.init(bus);
 
-		ModUtils.LOGGER.debug("Finished: Hylanda Registry");
+		TyrannoSignManager.registerSignBlock(() -> HylandaBlocks.BIOQUOIA_SIGN.get());
+		TyrannoSignManager.registerSignBlock(() -> HylandaBlocks.BIOQUOIA_WALL_SIGN.get());
 	}
 
 	private void commonSetup(FMLCommonSetupEvent event) {
-		ModUtils.BLOCKS.setIcon(BlockInit.SMITHY.asItem().getDefaultInstance());
-		ModUtils.ITEMS.setIcon(ItemInit.BEEF_AND_VEGETABLES.asItem().getDefaultInstance());
-		ModUtils.SPAWN_EGGS.setIcon(ItemInit.BIO_DEER_SPAWN_EGG.asItem().getDefaultInstance());
-		ModUtils.TOOLS.setIcon(ItemInit.ENERGISED_HATCHET.asItem().getDefaultInstance());
-		ModUtils.WEAPONS.setIcon(ItemInit.ENERGISED_SPEAR.asItem().getDefaultInstance());
+		BLOCKS.setIcon(HylandaBlocks.SMITHY.get().asItem().getDefaultInstance());
+		ITEMS.setIcon(HylandaItems.BEEF_AND_VEGETABLES.get().getDefaultInstance());
+		SPAWN_EGGS.setIcon(HylandaItems.BIO_DEER_SPAWN_EGG.get().getDefaultInstance());
+		TOOLS.setIcon(HylandaItems.ENERGISED_HATCHET.get().getDefaultInstance());
+		WEAPONS.setIcon(HylandaItems.ENERGISED_SPEAR.get().getDefaultInstance());
 	}
 
 	private void clientSetup(FMLClientSetupEvent event) {

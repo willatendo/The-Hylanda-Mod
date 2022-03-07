@@ -1,15 +1,15 @@
 package hylanda.library.tab;
 
-import hylanda.library.util.ModUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import tyrannotitanlib.library.base.itemgroup.TabBuilder;
+import tyrannotitanlib.core.content.Util;
+import tyrannotitanlib.library.itemgroup.BasicCreativeTab;
 
-public class ModTab extends TabBuilder {
+public class ModTab extends BasicCreativeTab {
 	public ItemStack itemIcon;
 
 	public ModTab(String tabId) {
-		super(ModUtils.ID, tabId);
+		super(Util.HYLANDA_ID, tabId);
 	}
 
 	@Override

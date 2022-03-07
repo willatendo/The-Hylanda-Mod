@@ -2,9 +2,9 @@ package hylanda.content.client.setup;
 
 import hylanda.content.client.entity.render.BioDeerRender;
 import hylanda.content.client.entity.render.GojirasaurusRender;
-import hylanda.content.server.init.BlockInit;
-import hylanda.content.server.init.EntityInit;
-import hylanda.content.server.init.ItemInit;
+import hylanda.content.server.init.HylandaBlocks;
+import hylanda.content.server.init.HylandaEntities;
+import hylanda.content.server.init.HylandaItems;
 import net.minecraft.client.color.item.ItemColors;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
@@ -16,17 +16,17 @@ public class ClientSetup {
 		ItemColors itemcolours = new ItemColors();
 		itemcolours.register((stack, dye) -> {
 			return dye > 0 ? -1 : ((DyeableLeatherItem) stack.getItem()).getColor(stack);
-		}, ItemInit.LEATHER_BIO_DEER_ARMOUR);
+		}, HylandaItems.LEATHER_BIO_DEER_ARMOUR.get(), HylandaItems.LEATHER_GOJIRASAURUS_ARMOUR.get());
 		return itemcolours;
 	}
-	
+
 	public static void setupBlock() {
-		ItemBlockRenderTypes.setRenderLayer(BlockInit.BIOQUOIA_LEAVES, RenderType.cutout());
-		ItemBlockRenderTypes.setRenderLayer(BlockInit.BIOQUOIA_SAPLING, RenderType.cutout());
+		ItemBlockRenderTypes.setRenderLayer(HylandaBlocks.BIOQUOIA_LEAVES.get(), RenderType.cutout());
+		ItemBlockRenderTypes.setRenderLayer(HylandaBlocks.BIOQUOIA_SAPLING.get(), RenderType.cutout());
 	}
-	
+
 	public static void setupEntity() {
-		EntityRenderers.register(EntityInit.GOJIRASAURUS, manager -> new GojirasaurusRender(manager));
-		EntityRenderers.register(EntityInit.BIO_DEER, manager -> new BioDeerRender(manager));
+		EntityRenderers.register(HylandaEntities.GOJIRASAURUS.get(), context -> new GojirasaurusRender(context));
+		EntityRenderers.register(HylandaEntities.BIO_DEER.get(), context -> new BioDeerRender(context));
 	}
 }

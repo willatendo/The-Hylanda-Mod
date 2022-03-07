@@ -9,9 +9,9 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
-import tyrannotitanlib.library.tyrannomation.renderers.TyrannomationEntityRenderer;
+import tyrannotitanlib.tyrannimation.renderers.AnimatedEntityRenderer;
 
-public class GojirasaurusRender extends TyrannomationEntityRenderer<GojirasaurusEntity> {
+public class GojirasaurusRender extends AnimatedEntityRenderer<GojirasaurusEntity> {
 	public GojirasaurusRender(EntityRendererProvider.Context renderManager) {
 		super(renderManager, new GojirasaurusModel());
 		this.shadowRadius = 1.0F;

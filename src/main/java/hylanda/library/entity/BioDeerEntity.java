@@ -1,6 +1,6 @@
 package hylanda.library.entity;
 
-import hylanda.content.server.init.EntityInit;
+import hylanda.content.server.init.HylandaEntities;
 import hylanda.library.entity.goal.BioDeerAvoidEntityGoal;
 import hylanda.library.entity.goal.BioDeerMeleeAttackGoal;
 import hylanda.library.entity.goal.BioDeerPanicGoal;
@@ -23,28 +23,28 @@ import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import tyrannotitanlib.library.tyrannomation.core.ITyrannomatable;
-import tyrannotitanlib.library.tyrannomation.core.PlayState;
-import tyrannotitanlib.library.tyrannomation.core.builder.TyrannomationBuilder;
-import tyrannotitanlib.library.tyrannomation.core.controller.TyrannomationController;
-import tyrannotitanlib.library.tyrannomation.core.event.predicate.TyrannomationEvent;
-import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationData;
-import tyrannotitanlib.library.tyrannomation.core.manager.TyrannomationFactory;
+import tyrannotitanlib.tyrannimation.core.AnimationEndTypes;
+import tyrannotitanlib.tyrannimation.core.IAnimated;
+import tyrannotitanlib.tyrannimation.core.builder.AnimationBuilder;
+import tyrannotitanlib.tyrannimation.core.controller.AnimationController;
+import tyrannotitanlib.tyrannimation.core.event.predicate.AnimationEvent;
+import tyrannotitanlib.tyrannimation.core.manager.AnimatedData;
+import tyrannotitanlib.tyrannimation.core.manager.AnimatedFactory;
 
-public class BioDeerEntity extends Animal implements ITyrannomatable {
+public class BioDeerEntity extends Animal implements IAnimated {
 	protected static final EntityDataAccessor<Byte> SEX = SynchedEntityData.defineId(BioDeerEntity.class, EntityDataSerializers.BYTE);
-	private TyrannomationFactory factory = new TyrannomationFactory(this);
+	private AnimatedFactory factory = new AnimatedFactory(this);
 
 	public static final String SEX_TAG = "Sex";
 
-	private <E extends ITyrannomatable> PlayState predicate(TyrannomationEvent<E> event) {
+	private <E extends IAnimated> AnimationEndTypes predicate(AnimationEvent<E> event) {
 		if (event.isMoving()) {
-			event.getController().setAnimation(new TyrannomationBuilder().addAnimation("animation.bio_deer.walk", true));
+			event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.bio_deer.walk", true));
 		} else {
-			event.getController().setAnimation(new TyrannomationBuilder().addAnimation("animation.bio_deer.idle", true));
+			event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.bio_deer.idle", true));
 		}
 
-		return PlayState.CONTINUE;
+		return AnimationEndTypes.CONTINUE;
 	}
 
 	public BioDeerEntity(EntityType<? extends BioDeerEntity> entity, Level world) {
@@ -56,12 +56,12 @@ public class BioDeerEntity extends Animal implements ITyrannomatable {
 	}
 
 	@Override
-	public void registerControllers(TyrannomationData data) {
-		data.addAnimationController(new TyrannomationController<ITyrannomatable>(this, "controller", 0, this::predicate));
+	public void registerAnimationControl(AnimatedData data) {
+		data.addAnimatedController(new AnimationController<IAnimated>(this, "controller", 0, this::predicate));
 	}
 
 	@Override
-	public TyrannomationFactory getFactory() {
+	public AnimatedFactory getAnimationFactory() {
 		return this.factory;
 	}
 
@@ -107,6 +107,6 @@ public class BioDeerEntity extends Animal implements ITyrannomatable {
 
 	@Override
 	public AgeableMob getBreedOffspring(ServerLevel world, AgeableMob entity) {
-		return EntityInit.BIO_DEER.create(world);
+		return HylandaEntities.BIO_DEER.get().create(world);
 	}
 }
