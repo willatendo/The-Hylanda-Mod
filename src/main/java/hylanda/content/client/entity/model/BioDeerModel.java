@@ -1,6 +1,6 @@
 package hylanda.content.client.entity.model;
 
-import hylanda.library.entity.BioDeerEntity;
+import hylanda.library.entity.BioDeer;
 import net.minecraft.resources.ResourceLocation;
 import tyrannotitanlib.core.content.Util;
 import tyrannotitanlib.tyrannimation.core.event.predicate.AnimationEvent;
@@ -8,7 +8,7 @@ import tyrannotitanlib.tyrannimation.core.processor.IAnimatedBone;
 import tyrannotitanlib.tyrannimation.model.AnimatedModel;
 import tyrannotitanlib.tyrannimation.model.provider.data.EntityModelData;
 
-public class BioDeerModel extends AnimatedModel<BioDeerEntity> {
+public class BioDeerModel extends AnimatedModel<BioDeer> {
 	private static final ResourceLocation MODEL = Util.HYLANDA_UTILS.resource("geo/bio_deer.geo.json");
 	private static final ResourceLocation MALE = Util.HYLANDA_UTILS.resource("textures/model/entity/bio_deer/male.png");
 	private static final ResourceLocation FEMALE = Util.HYLANDA_UTILS.resource("textures/model/entity/bio_deer/female.png");
@@ -16,22 +16,22 @@ public class BioDeerModel extends AnimatedModel<BioDeerEntity> {
 	private static ResourceLocation texture;
 
 	@Override
-	public ResourceLocation getModelLocation(BioDeerEntity object) {
+	public ResourceLocation getModelLocation(BioDeer object) {
 		return MODEL;
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(BioDeerEntity object) {
+	public ResourceLocation getTextureLocation(BioDeer object) {
 		return texture;
 	}
 
 	@Override
-	public ResourceLocation getAnimationFileLocation(BioDeerEntity animatable) {
+	public ResourceLocation getAnimationFileLocation(BioDeer animatable) {
 		return ANIMATION;
 	}
 
 	@Override
-	public void setLivingAnimations(BioDeerEntity entity, Integer uniqueID, AnimationEvent customPredicate) {
+	public void setLivingAnimations(BioDeer entity, Integer uniqueID, AnimationEvent customPredicate) {
 		super.setLivingAnimations(entity, uniqueID, customPredicate);
 
 		if (entity.getSex() == 1) {

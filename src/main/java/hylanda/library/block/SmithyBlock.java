@@ -56,6 +56,15 @@ public class SmithyBlock extends Block {
 					world.levelEvent(entity, 2001, otherpos, Block.getId(otherstate));
 				}
 			}
+
+			if (parts == SmithyParts.ANVIL) {
+				BlockPos otherpos = pos.above();
+				BlockState otherstate = world.getBlockState(otherpos);
+				if (otherstate.getBlock() == this) {
+					world.setBlock(otherpos, Blocks.AIR.defaultBlockState(), 35);
+					world.levelEvent(entity, 2001, otherpos, Block.getId(otherstate));
+				}
+			}
 		}
 
 		super.playerWillDestroy(world, pos, state, entity);
@@ -67,6 +76,7 @@ public class SmithyBlock extends Block {
 		if (!world.isClientSide) {
 			BlockPos blockpos = pos.relative(state.getValue(HORIZONTAL_FACING).getCounterClockWise());
 			world.setBlock(blockpos, state.setValue(PARTS, SmithyParts.RIGHT), 3);
+			world.setBlock(pos.above(), state.setValue(PARTS, SmithyParts.ANVIL), 3);
 			world.blockUpdated(pos, Blocks.AIR);
 			state.updateNeighbourShapes(world, pos, 3);
 		}

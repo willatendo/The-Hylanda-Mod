@@ -1,12 +1,12 @@
 package hylanda.library.entity.goal;
 
-import hylanda.library.entity.BioDeerEntity;
+import hylanda.library.entity.BioDeer;
 import net.minecraft.world.entity.ai.goal.PanicGoal;
 
 public class BioDeerPanicGoal extends PanicGoal {
-	private final BioDeerEntity entity;
+	private final BioDeer entity;
 	
-	public BioDeerPanicGoal(BioDeerEntity entity, double speedModifier) {
+	public BioDeerPanicGoal(BioDeer entity, double speedModifier) {
 		super(entity, speedModifier);
 		this.entity = entity;
 	}

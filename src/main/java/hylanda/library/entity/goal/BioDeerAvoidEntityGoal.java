@@ -1,12 +1,12 @@
 package hylanda.library.entity.goal;
 
-import hylanda.library.entity.BioDeerEntity;
+import hylanda.library.entity.BioDeer;
 import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
 
 public class BioDeerAvoidEntityGoal extends AvoidEntityGoal {
-	private final BioDeerEntity entity;
+	private final BioDeer entity;
 	
-	public BioDeerAvoidEntityGoal(BioDeerEntity entity, Class toAvoid, float maxDist, double walkSpeedModifier, double sprintSpeedModifier) {
+	public BioDeerAvoidEntityGoal(BioDeer entity, Class toAvoid, float maxDist, double walkSpeedModifier, double sprintSpeedModifier) {
 		super(entity, toAvoid, maxDist, walkSpeedModifier, sprintSpeedModifier);
 		this.entity = entity;
 	}

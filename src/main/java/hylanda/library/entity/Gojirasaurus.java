@@ -28,10 +28,10 @@ import tyrannotitanlib.tyrannimation.core.event.predicate.AnimationEvent;
 import tyrannotitanlib.tyrannimation.core.manager.AnimatedData;
 import tyrannotitanlib.tyrannimation.core.manager.AnimatedFactory;
 
-public class GojirasaurusEntity extends Animal implements IAnimated {
+public class Gojirasaurus extends Animal implements IAnimated {
 	private AnimatedFactory factory = new AnimatedFactory(this);
 
-	public static final EntityDataAccessor<Byte> ANIMATION = SynchedEntityData.defineId(GojirasaurusEntity.class, EntityDataSerializers.BYTE);
+	public static final EntityDataAccessor<Byte> ANIMATION = SynchedEntityData.defineId(Gojirasaurus.class, EntityDataSerializers.BYTE);
 
 	public static final byte ANIMATION_IDLE = 0;
 	public static final byte ANIMATION_SLEEP = 1;
@@ -79,7 +79,7 @@ public class GojirasaurusEntity extends Animal implements IAnimated {
 		return AnimationEndTypes.CONTINUE;
 	}
 
-	public GojirasaurusEntity(EntityType<? extends GojirasaurusEntity> entity, Level world) {
+	public Gojirasaurus(EntityType<? extends Gojirasaurus> entity, Level world) {
 		super(entity, world);
 	}
 
@@ -111,7 +111,7 @@ public class GojirasaurusEntity extends Animal implements IAnimated {
 		this.goalSelector.addGoal(3, new LookAtPlayerGoal(this, Player.class, 6.0F));
 		this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
 		this.goalSelector.addGoal(5, new GojirasaurusAttackGoal(this, 1.2F, false));
-		this.targetSelector.addGoal(6, new NearestAttackableTargetGoal<>(this, BioDeerEntity.class, false));
+		this.targetSelector.addGoal(6, new NearestAttackableTargetGoal<>(this, BioDeer.class, false));
 		this.targetSelector.addGoal(6, new NearestAttackableTargetGoal<>(this, Player.class, true));
 	}
 

@@ -2,6 +2,7 @@ package hylanda.content.server.init;
 
 import hylanda.content.HylandaMod;
 import hylanda.library.item.DyeableBioDeerArmour;
+import hylanda.library.item.OreFinderItem;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
@@ -41,7 +42,7 @@ public class HylandaItems {
 
 	public static final RegistryObject<Item> ENERGISED_SPEAR = ITEMS.register("energised_spear", () -> new Item(new Properties().stacksTo(1).tab(HylandaMod.WEAPONS)));
 	public static final RegistryObject<Item> ENERGISED_HATCHET = ITEMS.register("energised_hatchet", () -> new Item(new Properties().stacksTo(1).tab(HylandaMod.TOOLS)));
-	public static final RegistryObject<Item> ORE_FINDER = ITEMS.register("ore_finder", () -> new Item(new Properties().stacksTo(1).tab(HylandaMod.TOOLS)));
+	public static final RegistryObject<Item> ORE_FINDER = ITEMS.register("ore_finder", () -> new OreFinderItem(new Properties().stacksTo(1).tab(HylandaMod.TOOLS)));
 
 	public static final RegistryObject<Item> FLEEING_CAP = ITEMS.register("fleeing_cap", () -> new Item(new Properties().tab(HylandaMod.ITEMS).stacksTo(1)));
 	public static final RegistryObject<Item> HUNTERS_CAP = ITEMS.register("hunters_cap", () -> new Item(new Properties().tab(HylandaMod.ITEMS).stacksTo(1)));

@@ -2,7 +2,7 @@ package hylanda.library.entity.goal;
 
 import java.util.EnumSet;
 
-import hylanda.library.entity.GojirasaurusEntity;
+import hylanda.library.entity.Gojirasaurus;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.EntitySelector;
 import net.minecraft.world.entity.LivingEntity;
@@ -11,7 +11,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.pathfinder.Path;
 
 public class GojirasaurusAttackGoal extends Goal {
-	protected final GojirasaurusEntity entity;
+	protected final Gojirasaurus entity;
 	private final double speedModifier;
 	private final boolean followingTargetEvenIfNotSeen;
 	private Path path;
@@ -24,7 +24,7 @@ public class GojirasaurusAttackGoal extends Goal {
 	private int failedPathFindingPenalty = 0;
 	private boolean canPenalize = false;
 
-	public GojirasaurusAttackGoal(GojirasaurusEntity entity, double speedModifier, boolean followingTargetEvenIfNotSeen) {
+	public GojirasaurusAttackGoal(Gojirasaurus entity, double speedModifier, boolean followingTargetEvenIfNotSeen) {
 		this.entity = entity;
 		this.speedModifier = speedModifier;
 		this.followingTargetEvenIfNotSeen = followingTargetEvenIfNotSeen;
@@ -92,7 +92,7 @@ public class GojirasaurusAttackGoal extends Goal {
 
 		this.entity.setAggressive(false);
 		this.entity.getNavigation().stop();
-		this.entity.setAnimation(GojirasaurusEntity.ANIMATION_IDLE);
+		this.entity.setAnimation(Gojirasaurus.ANIMATION_IDLE);
 	}
 
 	public void tick() {
@@ -138,7 +138,7 @@ public class GojirasaurusAttackGoal extends Goal {
 			this.resetAttackCooldown();
 			this.entity.swing(InteractionHand.MAIN_HAND);
 			this.entity.doHurtTarget(entity);
-			this.entity.setAnimation(GojirasaurusEntity.ANIMATION_BITE_ATTACK);
+			this.entity.setAnimation(Gojirasaurus.ANIMATION_BITE_ATTACK);
 		}
 	}
 

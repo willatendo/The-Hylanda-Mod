@@ -4,21 +4,21 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 
 import hylanda.content.client.entity.model.BioDeerModel;
-import hylanda.library.entity.BioDeerEntity;
+import hylanda.library.entity.BioDeer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import tyrannotitanlib.tyrannimation.renderers.AnimatedEntityRenderer;
 
-public class BioDeerRender extends AnimatedEntityRenderer<BioDeerEntity> {
+public class BioDeerRender extends AnimatedEntityRenderer<BioDeer> {
 	public BioDeerRender(EntityRendererProvider.Context renderManager) {
 		super(renderManager, new BioDeerModel());
 		this.shadowRadius = 0.6F;
 	}
 
 	@Override
-	public RenderType getRenderType(BioDeerEntity entity, float partialTicks, PoseStack stack, MultiBufferSource renderTypeBuffer, VertexConsumer vertexBuilder, int packedLightIn, ResourceLocation textureLocation) {
+	public RenderType getRenderType(BioDeer entity, float partialTicks, PoseStack stack, MultiBufferSource renderTypeBuffer, VertexConsumer vertexBuilder, int packedLightIn, ResourceLocation textureLocation) {
 		if (entity.isBaby()) {
 			stack.scale(0.3F, 0.3F, 0.3F);
 		} else {
