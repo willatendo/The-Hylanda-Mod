@@ -1,16 +1,23 @@
 buildscript {
-    repositories {
-        maven { url = 'https://maven.minecraftforge.net' }
-        mavenCentral()
-    }
-    dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
-    }
+	repositories {
+		maven { url = 'https://maven.minecraftforge.net' }
+		mavenCentral()
+	}
+	dependencies {
+		classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
+	}
 }
 
+plugins {
+	id 'eclipse'
+	id 'maven-publish'
+	id 'com.github.johnrengelman.shadow' version '7.1.0'
+}
 apply plugin: 'net.minecraftforge.gradle'
-apply plugin: 'eclipse'
-apply plugin: 'maven-publish'
+
+configurations {
+	shade
+}
 
 version = '1.0.0'
 group = 'hylanda'
@@ -19,52 +26,88 @@ archivesBaseName = 'hylanda'
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 minecraft {
-    mappings channel: 'official', version: '1.18.2'
-    
-    runs {
-        client {
-            workingDirectory project.file('run')
+	mappings channel: 'official', version: '1.18.2'
+	
+	runs {
+		client {
+			workingDirectory project.file('run')
+			mods {
+				hylanda {
+					source sourceSets.main
+				}
+			}
+		}	
+			
+		data {
+			workingDirectory project.file('run')
+			
+			args '--mod', 'hylanda', '--all', '--existing', file('src/main/resources').toString(), '--existing', file('src/generated/resources').toString(), '--output', file('src/generated/resources/')
+					
+			mods {
+				hylanda {
+					sourceSets.main
+				}
+			}
+		}
+	}
+}
 
-            property 'forge.logging.markers', 'REGISTRIES'
+sourceSets.main.resources {
+    srcDir 'src/generated/resources'
+}
 
-            property 'forge.logging.console.level', 'debug'
-
-            mods {
-                hylanda {
-                    source sourceSets.main
-                }
-            }
-        }
-    }
+shadowJar {
+	classifier = ''
+	configurations = [project.configurations.shade]
+	relocate 'com.tterrag.registrate', 'hylanda.repack.registrate'
+	relocate 'tyrannotitanlib', 'hylanda.repack.tyrannotitanlib'
 }
 
 repositories {
-    maven {
-        url "https://www.cursemaven.com"
-        content {
-            includeGroup "curse.maven"
-        }
-    }
+	maven {
+		url "https://www.cursemaven.com"
+		content {
+			includeGroup "curse.maven"
+		}
+	}
+	maven { // Registrate
+		url "https://maven.tterrag.com/"
+	}
+	maven { 
+		url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/' 
+	}
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.18.2-40.0.3'
-    
-    implementation fg.deobf("curse.maven:tyrannotitan-library-forge-425570:3672307")
+	minecraft 'net.minecraftforge:forge:1.18.2-40.0.25'
+	
+	implementation fg.deobf("curse.maven:tyrannotitan-library-forge-425570:3711889")
+	implementation fg.deobf('software.bernie.geckolib:geckolib-1.18-forge:3.0.12')
+	
+	def registrate = "com.tterrag.registrate:Registrate:MC1.18.2-1.0.24"
+	implementation fg.deobf(registrate)
+	shade registrate
 }
 
 jar {
-    manifest {
-        attributes([
-            "Specification-Title": "hylanda",
-            "Specification-Vendor": "Willatendo",
-            "Specification-Version": "1.0.0",
-            "Implementation-Title": project.name,
-            "Implementation-Version": "${version}",
-            "Implementation-Vendor" :"Willatendo",
-            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
-        ])
-    }
+	manifest {
+		attributes([
+			"Specification-Title": "hylanda",
+			"Specification-Vendor": "Willatendo",
+			"Specification-Version": "1.0.0",
+			"Implementation-Title": project.name,
+			"Implementation-Version": "${version}",
+			"Implementation-Vendor" :"Willatendo",
+			"Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+		])
+	}
 }
+
+reobf {
+	shadowJar {}
+}
+
+build.dependsOn shadowJar
+build.dependsOn reobfShadowJar
 
 jar.finalizedBy('reobfJar')
