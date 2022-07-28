@@ -1,6 +1,0 @@
-{
-	"parent": "minecraft:block/button_pressed",
-	"textures": {
-		"texture": "hylanda:block/bioquoia_planks"
-	}
-}

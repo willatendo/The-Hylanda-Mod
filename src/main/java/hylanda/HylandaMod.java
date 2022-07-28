@@ -8,20 +8,18 @@ import hylanda.server.entity.HylandaEntities;
 import hylanda.server.item.HylandaItems;
 import hylanda.server.tab.ModTab;
 import hylanda.server.util.HylandaRegistrate;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import software.bernie.geckolib3.GeckoLib;
-import tyrannotitanlib.core.content.UtilitiesRegistry;
-import tyrannotitanlib.library.block.TyrannoSignManager;
 
 @Mod(HylandaMod.ID)
 public class HylandaMod {
 	public static final String ID = "hylanda";
-	public static final UtilitiesRegistry UTILITES = new UtilitiesRegistry(ID);
-	public static final NonNullSupplier<HylandaRegistrate> CENTRAL_REGISTRATE = HylandaRegistrate.lazy(ID);
+	public static final NonNullSupplier<HylandaRegistrate> REGISTRATE = HylandaRegistrate.lazy(ID);
 
 	public static final ModTab ITEMS = new ModTab("items");
 	public static final ModTab BLOCKS = new ModTab("blocks");
@@ -40,8 +38,8 @@ public class HylandaMod {
 		HylandaBlocks.init(bus);
 		HylandaEntities.init();
 
-		TyrannoSignManager.registerSignBlock(() -> HylandaBlocks.BIOQUOIA_SIGN.get());
-		TyrannoSignManager.registerSignBlock(() -> HylandaBlocks.BIOQUOIA_WALL_SIGN.get());
+//		TyrannoSignManager.registerSignBlock(() -> HylandaBlocks.BIOQUOIA_SIGN.get());
+//		TyrannoSignManager.registerSignBlock(() -> HylandaBlocks.BIOQUOIA_WALL_SIGN.get());
 	}
 
 	private void commonSetup(FMLCommonSetupEvent event) {
@@ -55,5 +53,13 @@ public class HylandaMod {
 	private void clientSetup(FMLClientSetupEvent event) {
 		ClientSetup.itemColourSetup();
 		ClientSetup.setupBlock();
+	}
+
+	public static HylandaRegistrate getRegistrate() {
+		return REGISTRATE.get();
+	}
+
+	public static ResourceLocation rL(String path) {
+		return new ResourceLocation(ID, path);
 	}
 }

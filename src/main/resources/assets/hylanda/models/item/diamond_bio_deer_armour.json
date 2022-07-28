@@ -1,6 +1,0 @@
-{
-	"parent": "minecraft:item/generated",
-	"textures": {
-		"layer0": "hylanda:item/diamond_bio_deer_armor"
-	}
-}

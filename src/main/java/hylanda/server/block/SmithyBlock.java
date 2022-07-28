@@ -22,8 +22,8 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 
 public class SmithyBlock extends Block {
-	private static final EnumProperty<SmithyParts> PARTS = EnumProperty.create("parts", SmithyParts.class);
-	private static final DirectionProperty HORIZONTAL_FACING = HorizontalDirectionalBlock.FACING;
+	public static final EnumProperty<SmithyParts> PARTS = EnumProperty.create("parts", SmithyParts.class);
+	public static final DirectionProperty HORIZONTAL_FACING = HorizontalDirectionalBlock.FACING;
 
 	public SmithyBlock(Properties properties) {
 		super(properties);

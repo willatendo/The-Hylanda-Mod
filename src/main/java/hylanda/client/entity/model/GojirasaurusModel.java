@@ -1,7 +1,6 @@
 package hylanda.client.entity.model;
 
-import static hylanda.HylandaMod.UTILITES;
-
+import hylanda.HylandaMod;
 import hylanda.server.entity.Gojirasaurus;
 import net.minecraft.resources.ResourceLocation;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
@@ -10,9 +9,9 @@ import software.bernie.geckolib3.model.AnimatedGeoModel;
 import software.bernie.geckolib3.model.provider.data.EntityModelData;
 
 public class GojirasaurusModel extends AnimatedGeoModel<Gojirasaurus> {
-	private static final ResourceLocation MODEL = UTILITES.mod("geo/gojirasaurus.geo.json");
-	private static final ResourceLocation TEXTURE = UTILITES.mod("textures/model/entity/gojirasaurus/texture.png");
-	private static final ResourceLocation ANIMATION = UTILITES.mod("animations/gojirasaurus.animations.json");
+	private static final ResourceLocation MODEL = HylandaMod.rL("geo/gojirasaurus.geo.json");
+	private static final ResourceLocation TEXTURE = HylandaMod.rL("textures/model/entity/gojirasaurus/texture.png");
+	private static final ResourceLocation ANIMATION = HylandaMod.rL("animations/gojirasaurus.animations.json");
 
 	@Override
 	public ResourceLocation getModelLocation(Gojirasaurus object) {

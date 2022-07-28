@@ -2,14 +2,14 @@ package hylanda.server.tab;
 
 import hylanda.HylandaMod;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
-import tyrannotitanlib.library.itemgroup.BasicCreativeTab;
 
-public class ModTab extends BasicCreativeTab {
+public class ModTab extends CreativeModeTab {
 	public ItemStack itemIcon;
 
 	public ModTab(String tabId) {
-		super(HylandaMod.ID, tabId);
+		super(HylandaMod.ID + "." + tabId);
 	}
 
 	@Override

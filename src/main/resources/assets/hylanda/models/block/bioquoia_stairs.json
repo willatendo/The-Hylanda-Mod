@@ -1,8 +1,0 @@
-{
-	"parent": "minecraft:block/stairs",
-	"textures": {
-		"bottom": "hylanda:block/bioquoia_planks",
-		"top": "hylanda:block/bioquoia_planks",
-		"side": "hylanda:block/bioquoia_planks"
-	}
-}

@@ -81,7 +81,6 @@ repositories {
 dependencies {
 	minecraft 'net.minecraftforge:forge:1.18.2-40.0.25'
 	
-	implementation fg.deobf("curse.maven:tyrannotitan-library-forge-425570:3711889")
 	implementation fg.deobf('software.bernie.geckolib:geckolib-1.18-forge:3.0.12')
 	
 	def registrate = "com.tterrag.registrate:Registrate:MC1.18.2-1.0.24"

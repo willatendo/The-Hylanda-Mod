@@ -28,11 +28,3 @@ The base idea of the mod is to add unique creatures to your world but there is a
     versionRange="[1.18.2,1.19)"
     ordering="NONE"
     side="BOTH"
-
-    
-[[dependencies.hylanda]]
-    modId="tyrannotitanlib"
-    mandatory=true
-    versionRange="[v4.1.2,)"
-    ordering="NONE"
-    side="BOTH"

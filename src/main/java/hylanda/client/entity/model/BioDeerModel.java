@@ -1,7 +1,6 @@
 package hylanda.client.entity.model;
 
-import static hylanda.HylandaMod.UTILITES;
-
+import hylanda.HylandaMod;
 import hylanda.server.entity.BioDeer;
 import net.minecraft.resources.ResourceLocation;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
@@ -10,10 +9,10 @@ import software.bernie.geckolib3.model.AnimatedGeoModel;
 import software.bernie.geckolib3.model.provider.data.EntityModelData;
 
 public class BioDeerModel extends AnimatedGeoModel<BioDeer> {
-	private static final ResourceLocation MODEL = UTILITES.mod("geo/bio_deer.geo.json");
-	private static final ResourceLocation MALE = UTILITES.mod("textures/model/entity/bio_deer/male.png");
-	private static final ResourceLocation FEMALE = UTILITES.mod("textures/model/entity/bio_deer/female.png");
-	private static final ResourceLocation ANIMATION = UTILITES.mod("animations/bio_deer.animations.json");
+	private static final ResourceLocation MODEL = HylandaMod.rL("geo/bio_deer.geo.json");
+	private static final ResourceLocation MALE = HylandaMod.rL("textures/model/entity/bio_deer/male.png");
+	private static final ResourceLocation FEMALE = HylandaMod.rL("textures/model/entity/bio_deer/female.png");
+	private static final ResourceLocation ANIMATION = HylandaMod.rL("animations/bio_deer.animations.json");
 	private static ResourceLocation texture;
 
 	@Override
