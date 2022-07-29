@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "hylanda:block/bioquoia_log",
+    "end": "hylanda:block/bioquoia_log"
+  }
+}

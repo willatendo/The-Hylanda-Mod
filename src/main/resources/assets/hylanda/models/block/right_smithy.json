@@ -2,8 +2,7 @@
 	"texture_size": [128, 128],
 	"textures": {
 		"0": "hylanda:block/smithy",
-		"particle": "block/oak_planks"
-	},
+		"particle": "block/oak_planks"	},
 	"elements": [
 		{
 			"from": [0, 0, 11],

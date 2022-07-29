@@ -16,9 +16,9 @@ public class ServerEvent {
 	public static void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
 		CompoundTag playerData = event.getPlayer().getPersistentData();
 		CompoundTag data = playerData.getCompound(Player.PERSISTED_NBT_TAG);
-		if (data != null && !data.getBoolean("has_hylanda_book")) {
+		if (data != null && !data.getBoolean("HasHylandaBook")) {
 			ItemHandlerHelper.giveItemToPlayer(event.getPlayer(), HylandaItems.GUIDE_BOOK.get().getDefaultInstance());
-			data.putBoolean("has_hylanda_book", true);
+			data.putBoolean("HasHylandaBook", true);
 			playerData.put(Player.PERSISTED_NBT_TAG, data);
 		}
 	}

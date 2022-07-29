@@ -20,14 +20,22 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition.Builder;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class SmithyBlock extends Block {
 	public static final EnumProperty<SmithyParts> PARTS = EnumProperty.create("parts", SmithyParts.class);
 	public static final DirectionProperty HORIZONTAL_FACING = HorizontalDirectionalBlock.FACING;
+	public static final VoxelShape ANVIL = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 10.0D, 16.0D);
 
 	public SmithyBlock(Properties properties) {
 		super(properties);
 		this.registerDefaultState(this.stateDefinition.any().setValue(HORIZONTAL_FACING, Direction.NORTH).setValue(PARTS, SmithyParts.LEFT));
+	}
+
+	@Override
+	public VoxelShape getShape(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, CollisionContext collisionContext) {
+		return blockState.getValue(PARTS) == SmithyParts.ANVIL ? ANVIL : super.getShape(blockState, blockGetter, blockPos, collisionContext);
 	}
 
 	@Nullable
@@ -36,38 +44,39 @@ public class SmithyBlock extends Block {
 	}
 
 	@Override
-	public void playerWillDestroy(Level world, BlockPos pos, BlockState state, Player entity) {
-		if (!world.isClientSide) {
-			SmithyParts parts = state.getValue(PARTS);
+	public void playerWillDestroy(Level level, BlockPos blockPos, BlockState blockState, Player player) {
+		if (!level.isClientSide()) {
+			SmithyParts parts = blockState.getValue(PARTS);
 			if (parts == SmithyParts.LEFT) {
-				BlockPos otherpos = pos.relative(state.getValue(HORIZONTAL_FACING).getCounterClockWise());
-				BlockState otherstate = world.getBlockState(otherpos);
+				BlockPos otherpos = blockPos.relative(blockState.getValue(HORIZONTAL_FACING).getCounterClockWise());
+				BlockState otherstate = level.getBlockState(otherpos);
 				if (otherstate.getBlock() == this) {
-					world.setBlock(otherpos, Blocks.AIR.defaultBlockState(), 35);
-					world.levelEvent(entity, 2001, otherpos, Block.getId(otherstate));
+					level.destroyBlock(otherpos, !player.isCreative());
+					level.destroyBlock(blockPos.above(), !player.isCreative());
 				}
 			}
 
 			if (parts == SmithyParts.RIGHT) {
-				BlockPos otherpos = pos.relative(state.getValue(HORIZONTAL_FACING).getCounterClockWise());
-				BlockState otherstate = world.getBlockState(otherpos);
+				BlockPos otherpos = blockPos.relative(blockState.getValue(HORIZONTAL_FACING).getClockWise());
+				BlockState otherstate = level.getBlockState(otherpos);
 				if (otherstate.getBlock() == this) {
-					world.setBlock(otherpos, Blocks.AIR.defaultBlockState(), 35);
-					world.levelEvent(entity, 2001, otherpos, Block.getId(otherstate));
+					level.destroyBlock(otherpos, !player.isCreative());
+					level.destroyBlock(otherpos.above(), !player.isCreative());
 				}
 			}
 
 			if (parts == SmithyParts.ANVIL) {
-				BlockPos otherpos = pos.above();
-				BlockState otherstate = world.getBlockState(otherpos);
+				BlockPos otherpos = blockPos.below();
+				BlockState otherstate = level.getBlockState(otherpos);
 				if (otherstate.getBlock() == this) {
-					world.setBlock(otherpos, Blocks.AIR.defaultBlockState(), 35);
-					world.levelEvent(entity, 2001, otherpos, Block.getId(otherstate));
+					level.destroyBlock(otherpos, !player.isCreative());
+					BlockPos horizontal = otherpos.relative(blockState.getValue(HORIZONTAL_FACING).getCounterClockWise());
+					level.destroyBlock(horizontal, !player.isCreative());
 				}
 			}
 		}
 
-		super.playerWillDestroy(world, pos, state, entity);
+		super.playerWillDestroy(level, blockPos, blockState, player);
 	}
 
 	@Override
@@ -94,8 +103,9 @@ public class SmithyBlock extends Block {
 
 	@Override
 	public boolean canSurvive(BlockState state, LevelReader reader, BlockPos pos) {
-		BlockPos otherpos = pos.relative(state.getValue(HORIZONTAL_FACING).getCounterClockWise());
-		return reader.getBlockState(otherpos).getMaterial().isReplaceable();
+		BlockPos horizontal = pos.relative(state.getValue(HORIZONTAL_FACING).getCounterClockWise());
+		BlockPos above = pos.relative(Direction.UP);
+		return reader.getBlockState(horizontal).getMaterial().isReplaceable() && reader.getBlockState(above).getMaterial().isReplaceable();
 	}
 
 	@Override

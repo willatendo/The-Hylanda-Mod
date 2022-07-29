@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_bottom",
+  "textures": {
+    "bottom": "hylanda:block/bioquoia_planks",
+    "top": "hylanda:block/bioquoia_planks"
+  }
+}

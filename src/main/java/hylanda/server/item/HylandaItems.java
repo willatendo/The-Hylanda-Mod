@@ -1,65 +1,83 @@
 package hylanda.server.item;
 
+import com.tterrag.registrate.util.entry.ItemEntry;
+
 import hylanda.HylandaMod;
+import hylanda.server.util.HylandaRegistrate;
+import net.minecraft.client.color.item.ItemColor;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.DyeableLeatherItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Item.Properties;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+import net.minecraft.world.item.ItemStack;
 
 public class HylandaItems {
-	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, HylandaMod.ID);
+	public static final HylandaRegistrate REGISTRATE = HylandaMod.getRegistrate().creativeModeTab(() -> HylandaMod.ITEMS, "Items");
 
-	public static final RegistryObject<Item> BIO_DEER_PSEUDO_ANTLERS = ITEMS.register("bio_deer_pseudo_antlers", () -> new Item(new Properties().tab(HylandaMod.ITEMS)));
-	public static final RegistryObject<Item> BIO_DEER_ANTLERS = ITEMS.register("bio_deer_antlers", () -> new Item(new Properties().tab(HylandaMod.ITEMS)));
-	public static final RegistryObject<Item> DOE_BIO_HIDE = ITEMS.register("doe_bio_hide", () -> new Item(new Properties().tab(HylandaMod.ITEMS)));
-	public static final RegistryObject<Item> BUCK_BIO_HIDE = ITEMS.register("buck_bio_hide", () -> new Item(new Properties().tab(HylandaMod.ITEMS)));
-	public static final RegistryObject<Item> CAVE_SALAMANDER_EGG = ITEMS.register("cave_salamander_egg", () -> new Item(new Properties().tab(HylandaMod.ITEMS)));
-	public static final RegistryObject<Item> BLUE_CORNIGERSUCHUS_CREST = ITEMS.register("blue_cornigersuchus_crest", () -> new Item(new Properties().tab(HylandaMod.ITEMS)));
-	public static final RegistryObject<Item> ORANGE_CORNIGERSUCHUS_CREST = ITEMS.register("orange_cornigersuchus_crest", () -> new Item(new Properties().tab(HylandaMod.ITEMS)));
-	public static final RegistryObject<Item> PURPLE_CORNIGERSUCHUS_CREST = ITEMS.register("purple_cornigersuchus_crest", () -> new Item(new Properties().tab(HylandaMod.ITEMS)));
-	public static final RegistryObject<Item> RED_CORNIGERSUCHUS_CREST = ITEMS.register("red_cornigersuchus_crest", () -> new Item(new Properties().tab(HylandaMod.ITEMS)));
-	public static final RegistryObject<Item> GOJIRASAURUS_DORSAL_PLATE = ITEMS.register("gojirasaurus_dorsal_plate", () -> new Item(new Properties().tab(HylandaMod.ITEMS)));
-	public static final RegistryObject<Item> GOLDEN_SCALE = ITEMS.register("golden_scales", () -> new Item(new Properties().tab(HylandaMod.ITEMS)));
-	public static final RegistryObject<Item> SLITHER_GEM = ITEMS.register("slither_gem", () -> new Item(new Properties().tab(HylandaMod.ITEMS)));
-	public static final RegistryObject<Item> LEOSAURUS_CLAW = ITEMS.register("leosaurus_claw", () -> new Item(new Properties().tab(HylandaMod.ITEMS)));
-	public static final RegistryObject<Item> RAW_VENISON = ITEMS.register("raw_venison", () -> new Item(new Properties().tab(HylandaMod.ITEMS)));
-	public static final RegistryObject<Item> COOKED_VENISON = ITEMS.register("cooked_venison", () -> new Item(new Properties().tab(HylandaMod.ITEMS)));
-	public static final RegistryObject<Item> WITHER_BONE = ITEMS.register("wither_bone", () -> new Item(new Properties().tab(HylandaMod.ITEMS)));
-	public static final RegistryObject<Item> GUIDE_BOOK = ITEMS.register("guide_book", () -> new Item(new Properties().tab(HylandaMod.ITEMS)));
-	public static final RegistryObject<Item> OLD_BOOK = ITEMS.register("old_book", () -> new Item(new Properties().tab(HylandaMod.ITEMS)));
+	public static final ItemEntry<Item> BIO_DEER_PSEUDO_ANTLERS = REGISTRATE.item("bio_deer_pseudo_antlers", Item::new).register();
+	public static final ItemEntry<Item> BIO_DEER_ANTLERS = REGISTRATE.item("bio_deer_antlers", Item::new).register();
+	public static final ItemEntry<Item> DOE_BIO_HIDE = REGISTRATE.item("doe_bio_hide", Item::new).register();
+	public static final ItemEntry<Item> BUCK_BIO_HIDE = REGISTRATE.item("buck_bio_hide", Item::new).register();
+	public static final ItemEntry<Item> CAVE_SALAMANDER_EGG = REGISTRATE.item("cave_salamander_egg", Item::new).register();
+	public static final ItemEntry<Item> BLUE_CORNIGERSUCHUS_CREST = REGISTRATE.item("blue_cornigersuchus_crest", Item::new).register();
+	public static final ItemEntry<Item> ORANGE_CORNIGERSUCHUS_CREST = REGISTRATE.item("orange_cornigersuchus_crest", Item::new).register();
+	public static final ItemEntry<Item> PURPLE_CORNIGERSUCHUS_CREST = REGISTRATE.item("purple_cornigersuchus_crest", Item::new).register();
+	public static final ItemEntry<Item> RED_CORNIGERSUCHUS_CREST = REGISTRATE.item("red_cornigersuchus_crest", Item::new).register();
+	public static final ItemEntry<Item> GOJIRASAURUS_DORSAL_PLATE = REGISTRATE.item("gojirasaurus_dorsal_plate", Item::new).register();
+	public static final ItemEntry<Item> GOLDEN_SCALE = REGISTRATE.item("golden_scales", Item::new).register();
+	public static final ItemEntry<Item> SLITHER_GEM = REGISTRATE.item("slither_gem", Item::new).register();
+	public static final ItemEntry<Item> LEOSAURUS_CLAW = REGISTRATE.item("leosaurus_claw", Item::new).register();
+	public static final ItemEntry<Item> RAW_VENISON = REGISTRATE.item("raw_venison", Item::new).properties(properties -> properties.food(new FoodProperties.Builder().nutrition(3).saturationMod(0.3F).meat().build())).register();
+	public static final ItemEntry<Item> COOKED_VENISON = REGISTRATE.item("cooked_venison", Item::new).properties(properties -> properties.food(new FoodProperties.Builder().nutrition(8).saturationMod(0.8F).meat().build())).register();
+	public static final ItemEntry<Item> WITHER_BONE = REGISTRATE.item("wither_bone", Item::new).register();
+	public static final ItemEntry<Item> GUIDE_BOOK = REGISTRATE.item("guide_book", Item::new).register();
+	public static final ItemEntry<Item> OLD_BOOK = REGISTRATE.item("old_book", Item::new).register();
 
-	private static final FoodProperties BEEF_AND_VEGETABLES_FOOD = new FoodProperties.Builder().nutrition(10).saturationMod(10.0F).effect(() -> new MobEffectInstance(MobEffects.POISON, 600, 0), 0.4F).build();
-	public static final RegistryObject<Item> BEEF_AND_VEGETABLES = ITEMS.register("beef_and_vegetables", () -> new Item(new Properties().food(BEEF_AND_VEGETABLES_FOOD).tab(HylandaMod.ITEMS)));
+	public static final ItemEntry<Item> BEEF_AND_VEGETABLES = REGISTRATE.item("beef_and_vegetables", Item::new).properties(properties -> properties.food(new FoodProperties.Builder().nutrition(10).saturationMod(10.0F).meat().effect(() -> new MobEffectInstance(MobEffects.POISON, 600, 0), 0.4F).build())).register();
 
-	public static final RegistryObject<Item> ENERGISED_SPEAR = ITEMS.register("energised_spear", () -> new Item(new Properties().stacksTo(1).tab(HylandaMod.WEAPONS)));
-	public static final RegistryObject<Item> ENERGISED_HATCHET = ITEMS.register("energised_hatchet", () -> new Item(new Properties().stacksTo(1).tab(HylandaMod.TOOLS)));
-	public static final RegistryObject<Item> ORE_FINDER = ITEMS.register("ore_finder", () -> new OreFinderItem(new Properties().stacksTo(1).tab(HylandaMod.TOOLS)));
+	static {
+		REGISTRATE.creativeModeTab(() -> HylandaMod.WEAPONS, "Weapons");
+	}
 
-	public static final RegistryObject<Item> FLEEING_CAP = ITEMS.register("fleeing_cap", () -> new Item(new Properties().tab(HylandaMod.ITEMS).stacksTo(1)));
-	public static final RegistryObject<Item> HUNTERS_CAP = ITEMS.register("hunters_cap", () -> new Item(new Properties().tab(HylandaMod.ITEMS).stacksTo(1)));
+	public static final ItemEntry<Item> ENERGISED_SPEAR = REGISTRATE.item("energised_spear", Item::new).properties(properties -> properties.stacksTo(1)).register();
 
-	public static final RegistryObject<Item> GLIDING_SUIT = ITEMS.register("gliding_suit", () -> new Item(new Properties().tab(HylandaMod.ITEMS).stacksTo(1)));
+	static {
+		REGISTRATE.creativeModeTab(() -> HylandaMod.TOOLS, "Tools");
+	}
 
-	public static final RegistryObject<Item> LEATHER_GOJIRASAURUS_ARMOUR = ITEMS.register("leather_gojirasaurus_armour", () -> new DyeableBioDeerArmour(new Properties().tab(HylandaMod.ITEMS).stacksTo(1)));
-	public static final RegistryObject<Item> IRON_GOJIRASAURUS_ARMOUR = ITEMS.register("iron_gojirasaurus_armour", () -> new Item(new Properties().tab(HylandaMod.ITEMS).stacksTo(1)));
-	public static final RegistryObject<Item> GOLD_GOJIRASAURUS_ARMOUR = ITEMS.register("gold_gojirasaurus_armour", () -> new Item(new Properties().tab(HylandaMod.ITEMS).stacksTo(1)));
-	public static final RegistryObject<Item> DIAMOND_GOJIRASAURUS_ARMOUR = ITEMS.register("diamond_gojirasaurus_armour", () -> new Item(new Properties().tab(HylandaMod.ITEMS).stacksTo(1)));
-	public static final RegistryObject<Item> NETHERITE_GOJIRASAURUS_ARMOUR = ITEMS.register("netherite_gojirasaurus_armour", () -> new Item(new Properties().tab(HylandaMod.ITEMS).stacksTo(1)));
+	public static final ItemEntry<Item> ENERGISED_HATCHET = REGISTRATE.item("energised_hatchet", Item::new).properties(properties -> properties.stacksTo(1)).register();
+	public static final ItemEntry<OreFinderItem> ORE_FINDER = REGISTRATE.item("ore_finder", OreFinderItem::new).properties(properties -> properties.stacksTo(1)).register();
 
-	public static final RegistryObject<Item> BIO_DEER_SADDLE = ITEMS.register("bio_deer_saddle", () -> new Item(new Properties().tab(HylandaMod.ITEMS).stacksTo(1)));
+	public static final ItemEntry<Item> FLEEING_CAP = REGISTRATE.item("fleeing_cap", Item::new).properties(properties -> properties.stacksTo(1)).register();
+	public static final ItemEntry<Item> HUNTERS_CAP = REGISTRATE.item("hunters_cap", Item::new).properties(properties -> properties.stacksTo(1)).register();
 
-	public static final RegistryObject<Item> LEATHER_BIO_DEER_ARMOUR = ITEMS.register("leather_bio_deer_armour", () -> new DyeableBioDeerArmour(new Properties().tab(HylandaMod.ITEMS).stacksTo(1)));
-	public static final RegistryObject<Item> IRON_BIO_DEER_ARMOUR = ITEMS.register("iron_bio_deer_armour", () -> new Item(new Properties().tab(HylandaMod.ITEMS).stacksTo(1)));
-	public static final RegistryObject<Item> GOLD_BIO_DEER_ARMOUR = ITEMS.register("gold_bio_deer_armour", () -> new Item(new Properties().tab(HylandaMod.ITEMS).stacksTo(1)));
-	public static final RegistryObject<Item> DIAMOND_BIO_DEER_ARMOUR = ITEMS.register("diamond_bio_deer_armour", () -> new Item(new Properties().tab(HylandaMod.ITEMS).stacksTo(1)));
-	public static final RegistryObject<Item> NETHERITE_BIO_DEER_ARMOUR = ITEMS.register("netherite_bio_deer_armour", () -> new Item(new Properties().tab(HylandaMod.ITEMS).stacksTo(1)));
+	public static final ItemEntry<Item> GLIDING_SUIT = REGISTRATE.item("gliding_suit", Item::new).properties(properties -> properties.stacksTo(1)).register();
 
-	public static void init(IEventBus bus) {
-		ITEMS.register(bus);
+	public static final ItemEntry<DyeableBioDeerArmour> LEATHER_GOJIRASAURUS_ARMOUR = REGISTRATE.item("leather_gojirasaurus_armor", DyeableBioDeerArmour::new).properties(properties -> properties.stacksTo(1)).color(() -> () -> new ItemColor() {
+		@Override
+		public int getColor(ItemStack itemStack, int layer) {
+			return layer > 0 ? -1 : ((DyeableLeatherItem) itemStack.getItem()).getColor(itemStack);
+		}
+	}).register();
+	public static final ItemEntry<Item> IRON_GOJIRASAURUS_ARMOUR = REGISTRATE.item("iron_gojirasaurus_armor", Item::new).properties(properties -> properties.stacksTo(1)).register();
+	public static final ItemEntry<Item> GOLD_GOJIRASAURUS_ARMOUR = REGISTRATE.item("gold_gojirasaurus_armor", Item::new).properties(properties -> properties.stacksTo(1)).register();
+	public static final ItemEntry<Item> DIAMOND_GOJIRASAURUS_ARMOUR = REGISTRATE.item("diamond_gojirasaurus_armor", Item::new).properties(properties -> properties.stacksTo(1)).register();
+	public static final ItemEntry<Item> NETHERITE_GOJIRASAURUS_ARMOUR = REGISTRATE.item("netherite_gojirasaurus_armor", Item::new).properties(properties -> properties.stacksTo(1)).register();
+
+	public static final ItemEntry<Item> BIO_DEER_SADDLE = REGISTRATE.item("bio_deer_saddle", Item::new).properties(properties -> properties.stacksTo(1)).register();
+
+	public static final ItemEntry<DyeableBioDeerArmour> LEATHER_BIO_DEER_ARMOUR = REGISTRATE.item("leather_bio_deer_armor", DyeableBioDeerArmour::new).properties(properties -> properties.stacksTo(1)).color(() -> () -> new ItemColor() {
+		@Override
+		public int getColor(ItemStack itemStack, int layer) {
+			return layer > 0 ? -1 : ((DyeableLeatherItem) itemStack.getItem()).getColor(itemStack);
+		}
+	}).register();
+	public static final ItemEntry<Item> IRON_BIO_DEER_ARMOUR = REGISTRATE.item("iron_bio_deer_armor", Item::new).properties(properties -> properties.stacksTo(1)).register();
+	public static final ItemEntry<Item> GOLD_BIO_DEER_ARMOUR = REGISTRATE.item("gold_bio_deer_armor", Item::new).properties(properties -> properties.stacksTo(1)).register();
+	public static final ItemEntry<Item> DIAMOND_BIO_DEER_ARMOUR = REGISTRATE.item("diamond_bio_deer_armor", Item::new).properties(properties -> properties.stacksTo(1)).register();
+	public static final ItemEntry<Item> NETHERITE_BIO_DEER_ARMOUR = REGISTRATE.item("netherite_bio_deer_armor", Item::new).properties(properties -> properties.stacksTo(1)).register();
+
+	public static void init() {
 	}
 }

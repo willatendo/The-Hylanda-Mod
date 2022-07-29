@@ -2,8 +2,9 @@ package hylanda;
 
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
 
-import hylanda.client.setup.ClientSetup;
+import hylanda.server.biome.HylandaBiomes;
 import hylanda.server.block.HylandaBlocks;
+import hylanda.server.block.entity.HylandaBlockEntities;
 import hylanda.server.entity.HylandaEntities;
 import hylanda.server.item.HylandaItems;
 import hylanda.server.tab.ModTab;
@@ -11,7 +12,6 @@ import hylanda.server.util.HylandaRegistrate;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import software.bernie.geckolib3.GeckoLib;
@@ -29,17 +29,15 @@ public class HylandaMod {
 
 	public HylandaMod() {
 		var bus = FMLJavaModLoadingContext.get().getModEventBus();
-		bus.addListener(this::clientSetup);
 		bus.addListener(this::commonSetup);
 
 		GeckoLib.initialize();
 
-		HylandaItems.init(bus);
-		HylandaBlocks.init(bus);
+		HylandaItems.init();
+		HylandaBlocks.init();
+		HylandaBlockEntities.init();
 		HylandaEntities.init();
-
-//		TyrannoSignManager.registerSignBlock(() -> HylandaBlocks.BIOQUOIA_SIGN.get());
-//		TyrannoSignManager.registerSignBlock(() -> HylandaBlocks.BIOQUOIA_WALL_SIGN.get());
+		HylandaBiomes.init();
 	}
 
 	private void commonSetup(FMLCommonSetupEvent event) {
@@ -48,11 +46,6 @@ public class HylandaMod {
 		SPAWN_EGGS.setIcon(Items.WANDERING_TRADER_SPAWN_EGG.getDefaultInstance());
 		TOOLS.setIcon(HylandaItems.ENERGISED_HATCHET.get().getDefaultInstance());
 		WEAPONS.setIcon(HylandaItems.ENERGISED_SPEAR.get().getDefaultInstance());
-	}
-
-	private void clientSetup(FMLClientSetupEvent event) {
-		ClientSetup.itemColourSetup();
-		ClientSetup.setupBlock();
 	}
 
 	public static HylandaRegistrate getRegistrate() {

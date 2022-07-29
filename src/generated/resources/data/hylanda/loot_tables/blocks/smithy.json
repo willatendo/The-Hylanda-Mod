@@ -7,7 +7,16 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:air"
+          "conditions": [
+            {
+              "condition": "minecraft:block_state_property",
+              "block": "hylanda:smithy",
+              "properties": {
+                "parts": "left"
+              }
+            }
+          ],
+          "name": "hylanda:smithy"
         }
       ],
       "conditions": [

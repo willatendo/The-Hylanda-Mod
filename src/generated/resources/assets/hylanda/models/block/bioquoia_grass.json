@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "top": "hylanda:block/bioquoia_grass_top",
+    "bottom": "minecraft:block/dirt",
+    "side": "hylanda:block/bioquoia_grass_side"
+  }
+}

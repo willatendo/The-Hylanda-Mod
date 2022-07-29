@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "hylanda:block/bioquoia_wood_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "hylanda:block/bioquoia_wood"
+    },
+    "axis=z": {
+      "model": "hylanda:block/bioquoia_wood_horizontal",
+      "x": 90
+    }
+  }
+}
