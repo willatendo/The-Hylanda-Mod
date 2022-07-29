@@ -6,6 +6,8 @@ import hylanda.server.biome.HylandaBiomes;
 import hylanda.server.block.HylandaBlocks;
 import hylanda.server.block.entity.HylandaBlockEntities;
 import hylanda.server.entity.HylandaEntities;
+import hylanda.server.feature.HylandaConfiguredFeatures;
+import hylanda.server.feature.HylandaFeatures;
 import hylanda.server.item.HylandaItems;
 import hylanda.server.tab.ModTab;
 import hylanda.server.util.HylandaRegistrate;
@@ -38,6 +40,8 @@ public class HylandaMod {
 		HylandaBlockEntities.init();
 		HylandaEntities.init();
 		HylandaBiomes.init();
+		HylandaFeatures.FEATURES.register(bus);
+		HylandaConfiguredFeatures.CONFIGURED_FEATURES.register(bus);
 	}
 
 	private void commonSetup(FMLCommonSetupEvent event) {

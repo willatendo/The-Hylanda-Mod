@@ -16,17 +16,17 @@ public class BioDeerModel extends AnimatedGeoModel<BioDeer> {
 	private static ResourceLocation texture;
 
 	@Override
-	public ResourceLocation getModelLocation(BioDeer object) {
+	public ResourceLocation getModelResource(BioDeer object) {
 		return MODEL;
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(BioDeer object) {
+	public ResourceLocation getTextureResource(BioDeer object) {
 		return texture;
 	}
 
 	@Override
-	public ResourceLocation getAnimationFileLocation(BioDeer animatable) {
+	public ResourceLocation getAnimationResource(BioDeer animatable) {
 		return ANIMATION;
 	}
 

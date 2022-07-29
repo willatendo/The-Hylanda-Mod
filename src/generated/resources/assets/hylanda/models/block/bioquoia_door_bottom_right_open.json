@@ -1,8 +1,7 @@
 {
-  "parent": "minecraft:block/slab_top",
+  "parent": "minecraft:block/door_bottom_right_open",
   "textures": {
     "bottom": "hylanda:block/bioquoia_planks",
-    "side": "hylanda:block/bioquoia_planks",
     "top": "hylanda:block/bioquoia_planks"
   }
 }

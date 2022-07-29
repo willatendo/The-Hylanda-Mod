@@ -14,17 +14,17 @@ public class GojirasaurusModel extends AnimatedGeoModel<Gojirasaurus> {
 	private static final ResourceLocation ANIMATION = HylandaMod.rL("animations/gojirasaurus.animations.json");
 
 	@Override
-	public ResourceLocation getModelLocation(Gojirasaurus object) {
+	public ResourceLocation getModelResource(Gojirasaurus object) {
 		return MODEL;
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(Gojirasaurus object) {
+	public ResourceLocation getTextureResource(Gojirasaurus object) {
 		return TEXTURE;
 	}
 
 	@Override
-	public ResourceLocation getAnimationFileLocation(Gojirasaurus animatable) {
+	public ResourceLocation getAnimationResource(Gojirasaurus animatable) {
 		return ANIMATION;
 	}
 

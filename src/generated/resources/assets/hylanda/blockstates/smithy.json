@@ -1,49 +1,49 @@
 {
   "variants": {
+    "facing=east,parts=anvil": {
+      "model": "hylanda:block/smithy_anvil",
+      "y": 90
+    },
+    "facing=east,parts=left": {
+      "model": "hylanda:block/smithy_left",
+      "y": 90
+    },
+    "facing=east,parts=right": {
+      "model": "hylanda:block/smithy_right",
+      "y": 90
+    },
     "facing=north,parts=anvil": {
       "model": "hylanda:block/smithy_anvil"
     },
+    "facing=north,parts=left": {
+      "model": "hylanda:block/smithy_left"
+    },
+    "facing=north,parts=right": {
+      "model": "hylanda:block/smithy_right"
+    },
     "facing=south,parts=anvil": {
       "model": "hylanda:block/smithy_anvil",
+      "y": 180
+    },
+    "facing=south,parts=left": {
+      "model": "hylanda:block/smithy_left",
+      "y": 180
+    },
+    "facing=south,parts=right": {
+      "model": "hylanda:block/smithy_right",
       "y": 180
     },
     "facing=west,parts=anvil": {
       "model": "hylanda:block/smithy_anvil",
       "y": 270
     },
-    "facing=east,parts=anvil": {
-      "model": "hylanda:block/smithy_anvil",
-      "y": 90
-    },
-    "facing=north,parts=left": {
-      "model": "hylanda:block/smithy_left"
-    },
-    "facing=south,parts=left": {
-      "model": "hylanda:block/smithy_left",
-      "y": 180
-    },
     "facing=west,parts=left": {
       "model": "hylanda:block/smithy_left",
       "y": 270
     },
-    "facing=east,parts=left": {
-      "model": "hylanda:block/smithy_left",
-      "y": 90
-    },
-    "facing=north,parts=right": {
-      "model": "hylanda:block/smithy_right"
-    },
-    "facing=south,parts=right": {
-      "model": "hylanda:block/smithy_right",
-      "y": 180
-    },
     "facing=west,parts=right": {
       "model": "hylanda:block/smithy_right",
       "y": 270
-    },
-    "facing=east,parts=right": {
-      "model": "hylanda:block/smithy_right",
-      "y": 90
     }
   }
 }

@@ -1,11 +1,10 @@
 package hylanda.server.block;
 
-import java.util.Random;
-
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.FluidTags;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
@@ -20,7 +19,7 @@ public class BioquoiaGrassBlock extends Block {
 	}
 
 	@Override
-	public void tick(BlockState state, ServerLevel worldIn, BlockPos pos, Random random) {
+	public void tick(BlockState state, ServerLevel worldIn, BlockPos pos, RandomSource randomSource) {
 		if (!worldIn.isClientSide()) {
 			if (!worldIn.isAreaLoaded(pos, 3))
 				return;
@@ -30,7 +29,7 @@ public class BioquoiaGrassBlock extends Block {
 				BlockState blockstate = this.defaultBlockState();
 
 				for (int i = 0; i < 4; ++i) {
-					BlockPos blockpos = pos.offset(random.nextInt(3) - 1, random.nextInt(5) - 3, random.nextInt(3) - 1);
+					BlockPos blockpos = pos.offset(randomSource.nextInt(3) - 1, randomSource.nextInt(5) - 3, randomSource.nextInt(3) - 1);
 					if (worldIn.getBlockState(blockpos).getBlock() == Blocks.DIRT && isValidBonemealTargetGrass(blockstate, worldIn, blockpos)) {
 						worldIn.setBlockAndUpdate(blockpos, blockstate);
 					}

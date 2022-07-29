@@ -10,6 +10,7 @@ import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import com.tterrag.registrate.util.nullness.NonNullUnaryOperator;
 
 import net.minecraft.Util;
+import net.minecraft.core.Registry;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeGenerationSettings;
@@ -20,7 +21,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class BiomeBuilder<T extends Biome, P> extends AbstractBuilder<Biome, T, P, BiomeBuilder<T, P>> {
 	public static <T extends Biome, P> BiomeBuilder<T, P> create(AbstractRegistrate<?> owner, P parent, String name, BuilderCallback callback, NonNullFunction<Biome.BiomeBuilder, T> factory) {
-		return new BiomeBuilder<>(owner, parent, name, callback, factory, () -> new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).biomeCategory(Biome.BiomeCategory.PLAINS).temperature(0.8F).downfall(0.4F).mobSpawnSettings(new MobSpawnSettings.Builder().build()).generationSettings(new BiomeGenerationSettings.Builder().build()).specialEffects(new BiomeSpecialEffects.Builder().waterColor(0x3F76E4).waterFogColor(0x50533).fogColor(0xC0D8FF).skyColor(calculateSkyColor(0.8F)).backgroundMusic(null).build())).defaultLang();
+		return new BiomeBuilder(owner, parent, name, callback, factory, () -> new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.8F).downfall(0.4F).mobSpawnSettings(new MobSpawnSettings.Builder().build()).generationSettings(new BiomeGenerationSettings.Builder().build()).specialEffects(new BiomeSpecialEffects.Builder().waterColor(0x3F76E4).waterFogColor(0x50533).fogColor(0xC0D8FF).skyColor(calculateSkyColor(0.8F)).backgroundMusic(null).build())).defaultLang();
 	}
 
 	private final NonNullFunction<Biome.BiomeBuilder, T> factory;
@@ -29,7 +30,7 @@ public class BiomeBuilder<T extends Biome, P> extends AbstractBuilder<Biome, T, 
 	private NonNullFunction<Biome.BiomeBuilder, Biome.BiomeBuilder> propertiesCallback = NonNullUnaryOperator.identity();
 
 	public BiomeBuilder(AbstractRegistrate<?> owner, P parent, String name, BuilderCallback callback, NonNullFunction<Biome.BiomeBuilder, T> factory, NonNullSupplier<Biome.BiomeBuilder> initialProperties) {
-		super(owner, parent, name, callback, Biome.class);
+		super(owner, parent, name, callback, Registry.BIOME_REGISTRY);
 		this.factory = factory;
 		this.initialProperties = initialProperties;
 	}
