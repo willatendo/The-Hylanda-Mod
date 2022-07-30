@@ -8,7 +8,6 @@ import net.minecraft.core.Direction;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
@@ -27,7 +26,7 @@ public class BioquoiaTreeFeature extends Feature<NoneFeatureConfiguration> {
 	@Override
 	public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> featurePlaceContext) {
 		BlockState log = HylandaBlocks.BIOQUOIA_LOG.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.Y);
-		BlockState leaves = HylandaBlocks.BIOQUOIA_LEAVES.get().defaultBlockState().setValue(LeavesBlock.DISTANCE, 4).setValue(LeavesBlock.PERSISTENT, false);
+//		BlockState leaves = HylandaBlocks.BIOQUOIA_LEAVES.get().defaultBlockState().setValue(LeavesBlock.DISTANCE, 4).setValue(LeavesBlock.PERSISTENT, false);
 		WorldGenLevel worldGenLevel = featurePlaceContext.level();
 		BlockPos blockPos = featurePlaceContext.origin();
 		RandomSource randomSource = featurePlaceContext.random();

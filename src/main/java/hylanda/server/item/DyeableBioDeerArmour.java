@@ -1,10 +1,9 @@
 package hylanda.server.item;
 
 import net.minecraft.world.item.DyeableLeatherItem;
-import net.minecraft.world.item.Item;
 
-public class DyeableBioDeerArmour extends Item implements DyeableLeatherItem {
-	public DyeableBioDeerArmour(Properties properties) {
-		super(properties);
+public class DyeableBioDeerArmour extends BioDeerArmourItem implements DyeableLeatherItem {
+	public DyeableBioDeerArmour(int protection, String texture, Properties properties) {
+		super(protection, texture, properties);
 	}
 }

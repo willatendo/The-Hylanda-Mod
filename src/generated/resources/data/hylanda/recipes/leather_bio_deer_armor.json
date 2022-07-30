@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": {
+      "item": "minecraft:leather"
+    },
+    "$": {
+      "tag": "hylanda:bio_deer_antlers"
+    }
+  },
+  "pattern": [
+    "#$#",
+    "###",
+    "# #"
+  ],
+  "result": {
+    "item": "hylanda:leather_bio_deer_armor"
+  }
+}

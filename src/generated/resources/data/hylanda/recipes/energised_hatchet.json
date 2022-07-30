@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "$": {
+      "item": "hylanda:steel_ingot"
+    },
+    "%": {
+      "item": "hylanda:gojirasaurus_dorsal_plate"
+    },
+    "@": {
+      "item": "hylanda:steel_rod"
+    }
+  },
+  "pattern": [
+    "%$%",
+    " @ ",
+    " @ "
+  ],
+  "result": {
+    "item": "hylanda:energised_hatchet"
+  }
+}

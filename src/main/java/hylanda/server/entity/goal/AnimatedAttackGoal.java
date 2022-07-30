@@ -2,16 +2,18 @@ package hylanda.server.entity.goal;
 
 import java.util.EnumSet;
 
-import hylanda.server.entity.Gojirasaurus;
+import hylanda.server.entity.AttackAnimations;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.EntitySelector;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.goal.Goal;
+import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.pathfinder.Node;
 import net.minecraft.world.level.pathfinder.Path;
 
-public class GojirasaurusAttackGoal extends Goal {
-	protected final Gojirasaurus entity;
+public class AnimatedAttackGoal<T extends Animal & AttackAnimations> extends Goal {
+	protected final T entity;
 	private final double speedModifier;
 	private final boolean followingTargetEvenIfNotSeen;
 	private Path path;
@@ -24,7 +26,7 @@ public class GojirasaurusAttackGoal extends Goal {
 	private int failedPathFindingPenalty = 0;
 	private boolean canPenalize = false;
 
-	public GojirasaurusAttackGoal(Gojirasaurus entity, double speedModifier, boolean followingTargetEvenIfNotSeen) {
+	public AnimatedAttackGoal(T entity, double speedModifier, boolean followingTargetEvenIfNotSeen) {
 		this.entity = entity;
 		this.speedModifier = speedModifier;
 		this.followingTargetEvenIfNotSeen = followingTargetEvenIfNotSeen;
@@ -92,7 +94,7 @@ public class GojirasaurusAttackGoal extends Goal {
 
 		this.entity.setAggressive(false);
 		this.entity.getNavigation().stop();
-		this.entity.setAnimation(Gojirasaurus.ANIMATION_IDLE);
+		this.entity.setAnimation(this.entity.getIdleAnimation());
 	}
 
 	public void tick() {
@@ -108,7 +110,7 @@ public class GojirasaurusAttackGoal extends Goal {
 			if (this.canPenalize) {
 				this.ticksUntilNextPathRecalculation += failedPathFindingPenalty;
 				if (this.entity.getNavigation().getPath() != null) {
-					net.minecraft.world.level.pathfinder.Node finalPathPoint = this.entity.getNavigation().getPath().getEndNode();
+					Node finalPathPoint = this.entity.getNavigation().getPath().getEndNode();
 					if (finalPathPoint != null && livingentity.distanceToSqr(finalPathPoint.x, finalPathPoint.y, finalPathPoint.z) < 1)
 						failedPathFindingPenalty = 0;
 					else
@@ -138,7 +140,7 @@ public class GojirasaurusAttackGoal extends Goal {
 			this.resetAttackCooldown();
 			this.entity.swing(InteractionHand.MAIN_HAND);
 			this.entity.doHurtTarget(entity);
-			this.entity.setAnimation(Gojirasaurus.ANIMATION_BITE_ATTACK);
+			this.entity.setAnimation(this.entity.getAttackAnimation());
 		}
 	}
 

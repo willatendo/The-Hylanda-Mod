@@ -1,6 +1,6 @@
 package hylanda.server.entity;
 
-import hylanda.server.entity.goal.GojirasaurusAttackGoal;
+import hylanda.server.entity.goal.AnimatedAttackGoal;
 import hylanda.server.entity.goal.GojirasaurusSwimGoal;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -27,10 +27,10 @@ import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class Gojirasaurus extends Animal implements IAnimatable {
-	private AnimationFactory factory = new AnimationFactory(this);
+public class Gojirasaurus extends Animal implements IAnimatable, AttackAnimations {
+	protected static final EntityDataAccessor<Byte> ANIMATION = SynchedEntityData.defineId(Gojirasaurus.class, EntityDataSerializers.BYTE);
 
-	public static final EntityDataAccessor<Byte> ANIMATION = SynchedEntityData.defineId(Gojirasaurus.class, EntityDataSerializers.BYTE);
+	private AnimationFactory factory = new AnimationFactory(this);
 
 	public static final byte ANIMATION_IDLE = 0;
 	public static final byte ANIMATION_SLEEP = 1;
@@ -109,13 +109,9 @@ public class Gojirasaurus extends Animal implements IAnimatable {
 		this.goalSelector.addGoal(2, new BreedGoal(this, 1.0D));
 		this.goalSelector.addGoal(3, new LookAtPlayerGoal(this, Player.class, 6.0F));
 		this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
-		this.goalSelector.addGoal(5, new GojirasaurusAttackGoal(this, 1.2F, false));
+		this.goalSelector.addGoal(5, new AnimatedAttackGoal(this, 1.2F, false));
 		this.targetSelector.addGoal(6, new NearestAttackableTargetGoal<>(this, BioDeer.class, false));
 		this.targetSelector.addGoal(6, new NearestAttackableTargetGoal<>(this, Player.class, true));
-	}
-
-	public void setAnimation(byte animation) {
-		this.entityData.set(ANIMATION, animation);
 	}
 
 	public byte getAnimation() {
@@ -125,5 +121,20 @@ public class Gojirasaurus extends Animal implements IAnimatable {
 	@Override
 	public AgeableMob getBreedOffspring(ServerLevel world, AgeableMob entity) {
 		return HylandaEntities.GOJIRASAURUS.get().create(world);
+	}
+
+	@Override
+	public void setAnimation(byte animation) {
+		this.entityData.set(ANIMATION, animation);
+	}
+
+	@Override
+	public byte getAttackAnimation() {
+		return ANIMATION_BITE_ATTACK;
+	}
+
+	@Override
+	public byte getIdleAnimation() {
+		return ANIMATION_IDLE;
 	}
 }

@@ -1,9 +1,8 @@
 package hylanda.server.entity.goal;
 
 import hylanda.server.entity.BioDeer;
-import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 
-public class BioDeerMeleeAttackGoal extends MeleeAttackGoal {
+public class BioDeerMeleeAttackGoal extends AnimatedAttackGoal<BioDeer> {
 	private final BioDeer entity;
 
 	public BioDeerMeleeAttackGoal(BioDeer entity, double speedModifier, boolean followingTargetEvenIfNotSeen) {

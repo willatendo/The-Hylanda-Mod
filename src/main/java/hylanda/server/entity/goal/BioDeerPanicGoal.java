@@ -5,7 +5,7 @@ import net.minecraft.world.entity.ai.goal.PanicGoal;
 
 public class BioDeerPanicGoal extends PanicGoal {
 	private final BioDeer entity;
-	
+
 	public BioDeerPanicGoal(BioDeer entity, double speedModifier) {
 		super(entity, speedModifier);
 		this.entity = entity;
@@ -13,6 +13,6 @@ public class BioDeerPanicGoal extends PanicGoal {
 
 	@Override
 	public boolean canUse() {
-		return entity.getSex() == 1 ? super.canUse() : false;
+		return entity.getSex() == 0 ? super.canUse() : false;
 	}
 }

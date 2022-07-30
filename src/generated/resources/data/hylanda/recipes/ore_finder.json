@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "!": {
+      "item": "hylanda:slither_gem"
+    },
+    "#": {
+      "item": "minecraft:redstone_torch"
+    },
+    "$": {
+      "item": "hylanda:golden_scales"
+    },
+    "%": {
+      "item": "minecraft:tinted_glass"
+    },
+    "&": {
+      "item": "minecraft:gold_block"
+    }
+  },
+  "pattern": [
+    "#%%",
+    "$!$",
+    "$&$"
+  ],
+  "result": {
+    "item": "hylanda:ore_finder"
+  }
+}

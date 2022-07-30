@@ -5,7 +5,7 @@ import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
 
 public class BioDeerAvoidEntityGoal extends AvoidEntityGoal {
 	private final BioDeer entity;
-	
+
 	public BioDeerAvoidEntityGoal(BioDeer entity, Class toAvoid, float maxDist, double walkSpeedModifier, double sprintSpeedModifier) {
 		super(entity, toAvoid, maxDist, walkSpeedModifier, sprintSpeedModifier);
 		this.entity = entity;
@@ -13,6 +13,6 @@ public class BioDeerAvoidEntityGoal extends AvoidEntityGoal {
 
 	@Override
 	public boolean canUse() {
-		return entity.getSex() == 1 ? super.canUse() : false;
+		return entity.getSex() == 0 ? super.canUse() : false;
 	}
 }

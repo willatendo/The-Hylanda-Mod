@@ -1,462 +1,674 @@
 {
 	"format_version": "1.8.0",
 	"animations": {
-		"animation.biodeer.idle": {
+		"idle": {
 			"loop": true,
 			"animation_length": 2.08,
 			"bones": {
 				"tail": {
 					"rotation": {
 						"0.0": {
-							"vector": [0, 0, 0]
+							"vector": [
+								0,
+								0,
+								0
+							]
 						},
 						"1.0": {
-							"vector": [2.5, 0, 0]
+							"vector": [
+								2.5,
+								0,
+								0
+							]
 						},
 						"2.04": {
-							"vector": [0, 0, 0]
+							"vector": [
+								0,
+								0,
+								0
+							]
 						}
 					}
 				},
 				"Neck": {
 					"rotation": {
 						"0.0": {
-							"vector": [0, 0, 0]
+							"vector": [
+								0,
+								0,
+								0
+							]
 						},
 						"1.0": {
-							"vector": [1, 0, 0]
+							"vector": [
+								1,
+								0,
+								0
+							]
 						},
 						"2.04": {
-							"vector": [0, 0, 0]
+							"vector": [
+								0,
+								0,
+								0
+							]
 						}
 					}
 				},
 				"bottom_jaw": {
 					"rotation": {
 						"0.0": {
-							"vector": [0, 0, 0]
+							"vector": [
+								0,
+								0,
+								0
+							]
 						},
 						"1.12": {
-							"vector": [10, 0, 0]
+							"vector": [
+								10,
+								0,
+								0
+							]
 						},
 						"1.44": {
-							"vector": [0, 0, 0]
+							"vector": [
+								0,
+								0,
+								0
+							]
 						}
 					}
 				}
 			}
 		},
-		"animation.biodeer.graze": {
+		"graze": {
 			"animation_length": 1.2,
 			"bones": {
 				"Neck": {
 					"rotation": {
 						"0.0": {
-							"vector": [0, 0, 0]
+							"vector": [
+								0,
+								0,
+								0
+							]
 						},
 						"0.44": {
-							"vector": [95, 0, 0]
+							"vector": [
+								95,
+								0,
+								0
+							]
 						},
 						"0.84": {
-							"vector": [92.5, 0, 0]
+							"vector": [
+								92.5,
+								0,
+								0
+							]
 						},
 						"1.16": {
-							"vector": [0, 0, 0]
+							"vector": [
+								0,
+								0,
+								0
+							]
 						}
 					}
 				},
 				"Head": {
 					"rotation": {
 						"0.0": {
-							"vector": [0, 0, 0]
+							"vector": [
+								0,
+								0,
+								0
+							]
 						},
 						"0.44": {
-							"vector": [-20, 0, 0]
+							"vector": [
+								-20,
+								0,
+								0
+							]
 						},
 						"0.56": {
-							"vector": [-22.5, 0, 0]
+							"vector": [
+								-22.5,
+								0,
+								0
+							]
 						},
 						"0.68": {
-							"vector": [-20, 0, 0]
+							"vector": [
+								-20,
+								0,
+								0
+							]
 						},
 						"0.8": {
-							"vector": [-22.5, 0, 0]
+							"vector": [
+								-22.5,
+								0,
+								0
+							]
 						},
 						"0.92": {
-							"vector": [0, 0, 0]
+							"vector": [
+								0,
+								0,
+								0
+							]
 						}
 					}
 				},
 				"bottom_jaw": {
 					"rotation": {
 						"0.44": {
-							"vector": [0, 0, 0]
+							"vector": [
+								0,
+								0,
+								0
+							]
 						},
 						"0.56": {
-							"vector": [17.5, 0, 0]
+							"vector": [
+								17.5,
+								0,
+								0
+							]
 						},
 						"0.68": {
-							"vector": [0, 0, 0]
+							"vector": [
+								0,
+								0,
+								0
+							]
 						},
 						"0.8": {
-							"vector": [17.5, 0, 0]
+							"vector": [
+								17.5,
+								0,
+								0
+							]
 						},
 						"0.92": {
-							"vector": [0, 0, 0]
+							"vector": [
+								0,
+								0,
+								0
+							]
 						}
 					}
 				}
 			}
 		},
-		"animation.biodeer.attack": {
+		"attack": {
 			"animation_length": 1.04,
 			"bones": {
 				"Body": {
 					"rotation": {
 						"0.0": {
-							"vector": [0, 0, 0]
+							"vector": [
+								0,
+								0,
+								0
+							]
 						},
 						"0.2": {
-							"vector": [-35, 0, 0]
+							"vector": [
+								-35,
+								0,
+								0
+							]
 						},
 						"0.36": {
-							"vector": [0, 0, 0]
+							"vector": [
+								0,
+								0,
+								0
+							]
 						}
 					},
 					"position": {
 						"0.0": {
-							"vector": [0, 0, 0]
+							"vector": [
+								0,
+								0,
+								0
+							]
 						},
 						"0.2": {
-							"vector": [0, -3, 0]
+							"vector": [
+								0,
+								-3,
+								0
+							]
 						},
 						"0.36": {
-							"vector": [0, 0, 0]
+							"vector": [
+								0,
+								0,
+								0
+							]
 						}
 					}
 				},
 				"Neck": {
 					"rotation": {
 						"0.0": {
-							"vector": [0, 0, 0]
+							"vector": [
+								0,
+								0,
+								0
+							]
 						},
 						"0.28": {
-							"vector": [68.06, -7.5, 0]
+							"vector": [
+								68.06,
+								-7.5,
+								0
+							]
 						},
 						"0.4": {
-							"vector": [87.5, 0, 0]
+							"vector": [
+								87.5,
+								0,
+								0
+							]
 						},
 						"0.64": {
-							"vector": [0, 0, 0]
+							"vector": [
+								0,
+								0,
+								0
+							]
 						}
 					}
 				},
 				"right_arm": {
 					"rotation": {
 						"0.0": {
-							"vector": [0, 0, 0]
+							"vector": [
+								0,
+								0,
+								0
+							]
 						},
 						"0.24": {
-							"vector": [12.5, 0, 0]
+							"vector": [
+								12.5,
+								0,
+								0
+							]
 						},
 						"0.48": {
-							"vector": [0, 0, 0]
+							"vector": [
+								0,
+								0,
+								0
+							]
 						}
 					}
 				},
 				"left_arm": {
 					"rotation": {
 						"0.0": {
-							"vector": [0, 0, 0]
+							"vector": [
+								0,
+								0,
+								0
+							]
 						},
 						"0.24": {
-							"vector": [12.5, 0, 0]
+							"vector": [
+								12.5,
+								0,
+								0
+							]
 						},
 						"0.48": {
-							"vector": [0, 0, 0]
+							"vector": [
+								0,
+								0,
+								0
+							]
 						}
 					}
 				}
 			}
 		},
-		"animation.biodeer.walk": {
+		"walk": {
 			"loop": true,
 			"animation_length": 1.08,
 			"bones": {
 				"Neck": {
 					"rotation": {
 						"0.0": {
-							"vector": [0, 0, 0]
+							"vector": [
+								0,
+								0,
+								0
+							]
 						},
 						"0.52": {
-							"vector": [5, 0, 0]
+							"vector": [
+								5,
+								0,
+								0
+							]
 						},
 						"1.08": {
-							"vector": [0, 0, 0]
+							"vector": [
+								0,
+								0,
+								0
+							]
 						}
 					}
 				},
 				"right_arm": {
 					"rotation": {
 						"0.0": {
-							"vector": [20, 0, 0]
+							"vector": [
+								20,
+								0,
+								0
+							]
 						},
 						"0.52": {
-							"vector": [-22.5, 0, 0]
+							"vector": [
+								-22.5,
+								0,
+								0
+							]
 						},
 						"1.08": {
-							"vector": [20, 0, 0]
+							"vector": [
+								20,
+								0,
+								0
+							]
 						}
 					}
 				},
 				"left_arm": {
 					"rotation": {
 						"0.0": {
-							"vector": [-20, 0, 0]
+							"vector": [
+								-20,
+								0,
+								0
+							]
 						},
 						"0.52": {
-							"vector": [17.5, 0, 0]
+							"vector": [
+								17.5,
+								0,
+								0
+							]
 						},
 						"1.08": {
-							"vector": [-20, 0, 0]
+							"vector": [
+								-20,
+								0,
+								0
+							]
 						}
 					}
 				},
 				"left_leg": {
 					"rotation": {
 						"0.0": {
-							"vector": [20, 0, 0]
+							"vector": [
+								20,
+								0,
+								0
+							]
 						},
 						"0.52": {
-							"vector": [-20, 0, 0]
+							"vector": [
+								-20,
+								0,
+								0
+							]
 						},
 						"1.08": {
-							"vector": [20, 0, 0]
+							"vector": [
+								20,
+								0,
+								0
+							]
 						}
 					}
 				},
 				"right_leg": {
 					"rotation": {
 						"0.0": {
-							"vector": [-20, 0, 0]
+							"vector": [
+								-20,
+								0,
+								0
+							]
 						},
 						"0.52": {
-							"vector": [20, 0, 0]
+							"vector": [
+								20,
+								0,
+								0
+							]
 						},
 						"1.08": {
-							"vector": [-20, 0, 0]
+							"vector": [
+								-20,
+								0,
+								0
+							]
 						}
 					}
 				}
 			}
 		},
-		"animation.biodeer.charge_attack": {
+		"charge_attack": {
 			"animation_length": 1.48,
 			"bones": {
 				"main": {
 					"rotation": {
 						"1.12": {
-							"vector": [0, 0, 0]
+							"vector": [
+								0,
+								0,
+								0
+							]
 						},
 						"1.24": {
-							"vector": [37.5, 0, 0]
+							"vector": [
+								37.5,
+								0,
+								0
+							]
 						},
 						"1.48": {
-							"vector": [0, 0, 0]
+							"vector": [
+								0,
+								0,
+								0
+							]
 						}
 					}
 				},
 				"Body": {
 					"rotation": {
 						"0.0": {
-							"vector": [0, 0, 0]
+							"vector": [
+								0,
+								0,
+								0
+							]
 						},
 						"0.36": {
-							"vector": [22.5, 0, 0]
+							"vector": [
+								22.5,
+								0,
+								0
+							]
 						},
 						"1.12": {
-							"vector": [25, 0, 0]
+							"vector": [
+								25,
+								0,
+								0
+							]
 						},
 						"1.24": {
-							"vector": [-27.5, 0, 0]
+							"vector": [
+								-27.5,
+								0,
+								0
+							]
 						},
 						"1.48": {
-							"vector": [0, 0, 0]
+							"vector": [
+								0,
+								0,
+								0
+							]
 						}
 					}
 				},
 				"Neck": {
 					"rotation": {
 						"0.0": {
-							"vector": [0, 0, 0]
+							"vector": [
+								0,
+								0,
+								0
+							]
 						},
 						"0.36": {
-							"vector": [40, 0, 0]
+							"vector": [
+								40,
+								0,
+								0
+							]
 						},
 						"1.12": {
-							"vector": [40, 0, 0]
+							"vector": [
+								40,
+								0,
+								0
+							]
 						},
 						"1.24": {
-							"vector": [-50, 0, 0]
+							"vector": [
+								-50,
+								0,
+								0
+							]
 						},
 						"1.48": {
-							"vector": [0, 0, 0]
+							"vector": [
+								0,
+								0,
+								0
+							]
 						}
 					}
 				},
 				"Head": {
 					"rotation": {
 						"0.0": {
-							"vector": [0, 0, 0]
+							"vector": [
+								0,
+								0,
+								0
+							]
 						},
 						"1.48": {
-							"vector": [0, 0, 0]
+							"vector": [
+								0,
+								0,
+								0
+							]
 						}
 					}
 				},
 				"right_arm": {
 					"rotation": {
 						"0.0": {
-							"vector": [0, 0, 0]
+							"vector": [
+								0,
+								0,
+								0
+							]
 						},
 						"0.36": {
-							"vector": [-82.5, 0, 0]
+							"vector": [
+								-82.5,
+								0,
+								0
+							]
 						},
 						"1.12": {
-							"vector": [-82.5, 0, 0]
+							"vector": [
+								-82.5,
+								0,
+								0
+							]
 						},
 						"1.24": {
-							"vector": [37.5, 0, 0]
+							"vector": [
+								37.5,
+								0,
+								0
+							]
 						},
 						"1.48": {
-							"vector": [0, 0, 0]
+							"vector": [
+								0,
+								0,
+								0
+							]
 						}
 					}
 				},
 				"left_arm": {
 					"rotation": {
 						"0.0": {
-							"vector": [0, 0, 0]
+							"vector": [
+								0,
+								0,
+								0
+							]
 						},
 						"0.36": {
-							"vector": [-82.5, 0, 0]
+							"vector": [
+								-82.5,
+								0,
+								0
+							]
 						},
 						"1.12": {
-							"vector": [-82.5, 0, 0]
+							"vector": [
+								-82.5,
+								0,
+								0
+							]
 						},
 						"1.24": {
-							"vector": [37.5, 0, 0]
+							"vector": [
+								37.5,
+								0,
+								0
+							]
 						},
 						"1.48": {
-							"vector": [0, 0, 0]
-						}
-					}
-				}
-			}
-		},
-		"animation.bio_deer.walk": {
-			"loop": true,
-			"animation_length": 1,
-			"bones": {
-				"leg_1": {
-					"rotation": {
-						"0.0": {
-							"vector": [0, 0, 0]
-						},
-						"0.25": {
-							"vector": [20, 0, 0]
-						},
-						"0.75": {
-							"vector": [-20, 0, 0]
-						},
-						"1.0": {
-							"vector": [0, 0, 0]
-						}
-					}
-				},
-				"leg_2": {
-					"rotation": {
-						"0.0": {
-							"vector": [0, 0, 0]
-						},
-						"0.25": {
-							"vector": [-20, 0, 0]
-						},
-						"0.75": {
-							"vector": [20, 0, 0]
-						},
-						"1.0": {
-							"vector": [0, 0, 0]
-						}
-					}
-				},
-				"leg_3": {
-					"rotation": {
-						"0.0": {
-							"vector": [0, 0, 0]
-						},
-						"0.25": {
-							"vector": [20, 0, 0]
-						},
-						"0.75": {
-							"vector": [-20, 0, 0]
-						},
-						"1.0": {
-							"vector": [0, 0, 0]
-						}
-					}
-				},
-				"leg_4": {
-					"rotation": {
-						"0.0": {
-							"vector": [0, 0, 0]
-						},
-						"0.25": {
-							"vector": [-20, 0, 0]
-						},
-						"0.75": {
-							"vector": [20, 0, 0]
-						},
-						"1.0": {
-							"vector": [0, 0, 0]
-						}
-					}
-				},
-				"head": {
-					"rotation": {
-						"0.0": {
-							"vector": [0, 0, 0]
-						},
-						"0.25": {
-							"vector": [5, 0, 0]
-						},
-						"0.75": {
-							"vector": [-2.5, 0, 0]
-						},
-						"1.0": {
-							"vector": [0, 0, 0]
-						}
-					}
-				}
-			}
-		},
-		"animation.bio_deer.idle": {
-			"loop": true,
-			"animation_length": 4,
-			"bones": {
-				"head": {
-					"rotation": {
-						"0.0": {
-							"vector": [0, 0, 0]
-						},
-						"1.0": {
-							"vector": [7.5, 0, 0]
-						},
-						"3.0": {
-							"vector": [-5, 0, 0]
-						},
-						"4.0": {
-							"vector": [0, 0, 0]
+							"vector": [
+								0,
+								0,
+								0
+							]
 						}
 					}
 				}

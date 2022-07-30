@@ -9,15 +9,13 @@ import software.bernie.geckolib3.model.AnimatedGeoModel;
 import software.bernie.geckolib3.model.provider.data.EntityModelData;
 
 public class BioDeerModel extends AnimatedGeoModel<BioDeer> {
-	private static final ResourceLocation MODEL = HylandaMod.rL("geo/bio_deer.geo.json");
 	private static final ResourceLocation MALE = HylandaMod.rL("textures/model/entity/bio_deer/male.png");
 	private static final ResourceLocation FEMALE = HylandaMod.rL("textures/model/entity/bio_deer/female.png");
-	private static final ResourceLocation ANIMATION = HylandaMod.rL("animations/bio_deer.animations.json");
 	private static ResourceLocation texture;
 
 	@Override
 	public ResourceLocation getModelResource(BioDeer object) {
-		return MODEL;
+		return HylandaMod.rL("geo/bio_deer.geo.json");
 	}
 
 	@Override
@@ -27,7 +25,7 @@ public class BioDeerModel extends AnimatedGeoModel<BioDeer> {
 
 	@Override
 	public ResourceLocation getAnimationResource(BioDeer animatable) {
-		return ANIMATION;
+		return HylandaMod.rL("animations/bio_deer.animations.json");
 	}
 
 	@Override
@@ -35,9 +33,9 @@ public class BioDeerModel extends AnimatedGeoModel<BioDeer> {
 		super.setLivingAnimations(entity, uniqueID, customPredicate);
 
 		if (entity.getSex() == 1) {
-			texture = FEMALE;
-		} else {
 			texture = MALE;
+		} else {
+			texture = FEMALE;
 		}
 
 		IBone head = this.getAnimationProcessor().getBone("head");
